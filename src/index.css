@@ -1,0 +1,41 @@
+@import url("@/assets/css/fonts.css");
+@import url("@/assets/css/style.css");
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.navbar {
+  backdrop-filter: blur(15.699999809265137px);
+  background: #140f152b;
+  border-bottom: 3px solid;
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.card {
+  backdrop-filter: blur(38.599998474121094px);
+  background: #1515157a;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #4dd9f8 0%, #d94f9c 56%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btns-filter button {
+  background: linear-gradient(90deg, #4dd9f8 0%, #d94f9c 56%);
+  color: #fff;
+  margin-block: 20px;
+}
+
+.btns-filter button:hover {
+  transform: scale(1.2);
+  transition: 400ms transform;
+}
