@@ -1,10 +1,12 @@
 import { Typography, Box } from "@mui/material";
 import { motion } from "framer-motion"; // استيراد framer-motion
-import About_img from "@/assets/aboutus_img.png";
-import bg1 from "@/assets/bg1.webp";
-import bg2 from "@/assets/bg2.webp";
-// import Vedio from "@/assets/vedios/HFS (1).mp4";
 import { keyframes } from "@mui/system";
+
+// assets
+import About_img from "@/assets/images/aboutus_img.png";
+import bg1 from "@/assets/images/bg1.webp";
+import bg2 from "@/assets/images/bg2.webp";
+// import Vedio from "@/assets/vedios/HFS (1).mp4";
 
 const shadowPulse = keyframes`
   0% { box-shadow: 100px 0px 50px 1px rgba(0, 0,0, 0.75); }

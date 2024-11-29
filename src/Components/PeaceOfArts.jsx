@@ -6,19 +6,19 @@ import { keyframes } from "@mui/system";
 
 // import { Autoplay } from "swiper"; // Add Autoplay here
 // import peace_of_arts_img from "@/assets/peace_of_arts_img.png";
-import img1 from "@/assets/peace_of_art_imgs/img1.png";
-import img2 from "@/assets/peace_of_art_imgs/img2.png";
-import img3 from "@/assets/peace_of_art_imgs/img3.png";
-import img4 from "@/assets/peace_of_art_imgs/img4.png";
-import img5 from "@/assets/peace_of_art_imgs/img5.png";
-import img6 from "@/assets/peace_of_art_imgs/img6.png";
-import img7 from "@/assets/peace_of_art_imgs/img7.png";
-import img8 from "@/assets/peace_of_art_imgs/img8.png";
-import img9 from "@/assets/peace_of_art_imgs/img9.png";
-import img10 from "@/assets/peace_of_art_imgs/img10.png";
-import img11 from "@/assets/StarsBG.png";
-import Triangle from "@/assets/Trianle.png";
-import BlueRing from "@/assets/BlueRing.png";
+import img1 from "@/assets/images/peace_of_art_imgs/img1.png";
+import img2 from "@/assets/images/peace_of_art_imgs/img2.png";
+import img3 from "@/assets/images/peace_of_art_imgs/img3.png";
+import img4 from "@/assets/images/peace_of_art_imgs/img4.png";
+import img5 from "@/assets/images/peace_of_art_imgs/img5.png";
+import img6 from "@/assets/images/peace_of_art_imgs/img6.png";
+import img7 from "@/assets/images/peace_of_art_imgs/img7.png";
+import img8 from "@/assets/images/peace_of_art_imgs/img8.png";
+import img9 from "@/assets/images/peace_of_art_imgs/img9.png";
+import img10 from "@/assets/images/peace_of_art_imgs/img10.png";
+import img11 from "@/assets/images/StarsBG.png";
+import Triangle from "@/assets/images/Trianle.png";
+import BlueRing from "@/assets/images/BlueRing.png";
 
 const Fade = keyframes`
   0% { opacity: 0.01; }

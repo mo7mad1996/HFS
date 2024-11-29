@@ -1,16 +1,17 @@
 import { Box, Typography } from "@mui/material";
-import blankImg from "@/assets/blank.png";
-import googlePlay from "@/assets/googleplay.png";
-import appleStore from "@/assets/apple.png";
-import card1Bg from "@/assets/card1-bg.png";
-import card1_vector from "@/assets/card1_vector.png";
-import card2_vector from "@/assets/card2_vector.png";
 
-import card1Bg2 from "@/assets/card1_bg2.png";
-import cardsBg from "@/assets/ProductCardBG2.png";
-import cardsB3 from "@/assets/CSproductBG.png";
-import card2bg from "@/assets/card2-bg.png";
-import card2bg2 from "@/assets/card2-bg2.png";
+// assets
+import blankImg from "@/assets/images/blank.png";
+import googlePlay from "@/assets/images/googleplay.png";
+import appleStore from "@/assets/images/apple.png";
+import card1Bg from "@/assets/images/card1-bg.png";
+import card1_vector from "@/assets/images/card1_vector.png";
+import card2_vector from "@/assets/images/card2_vector.png";
+import card1Bg2 from "@/assets/images/card1_bg2.png";
+import cardsBg from "@/assets/images/ProductCardBG2.png";
+import cardsB3 from "@/assets/images/CSproductBG.png";
+import card2bg from "@/assets/images/card2-bg.png";
+import card2bg2 from "@/assets/images/card2-bg2.png";
 // import { useEffect } from "react";
 
 function SocietyProducts() {
