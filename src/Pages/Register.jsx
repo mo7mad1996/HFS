@@ -3,10 +3,10 @@ import camelcaseKeys from "camelcase-keys";
 import toast from "react-hot-toast";
 import { Context } from "@/Context";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // assets
-import logo from "@/assets/HFSLOGO.png";
-import axios from "axios";
+import logo from "@/assets/images/HFSLOGO.png";
 
 // components
 import {

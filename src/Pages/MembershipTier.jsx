@@ -1,4 +1,6 @@
 import { Box, Typography } from "@mui/material";
+
+// assets
 import vector1 from "@/assets/images/pages_assets/vector1.png";
 import border from "@/assets/images/pages_assets/border.png";
 import jade from "@/assets/images/pages_assets/jade.png";

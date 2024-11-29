@@ -1,7 +1,9 @@
 import { Box, Typography } from "@mui/material";
-import hfs_scoiety_img from "@/assets/hfs-society-img.png";
-import companyCallCard from "@/assets/company_call.png";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+// assets
+import hfs_scoiety_img from "@/assets/images/hfs-society-img.png";
+import companyCallCard from "@/assets/images/company_call.png";
 
 // Import Swiper styles
 import "swiper/css";

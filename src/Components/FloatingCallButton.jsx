@@ -5,7 +5,9 @@ import CloseIcon from "@mui/icons-material/Close"; // Import Close icon from Mat
 import XIcon from "@mui/icons-material/Close"; // Import Close icon from Material-UI
 import { keyframes } from "@emotion/react";
 import emailjs from "emailjs-com"; // Import EmailJS
-import myIcon from "@/assets/technical-support-svgrepo-com.svg"; // Adjust the path as necessary
+
+// assets
+import myIcon from "@/assets/images/placeholder/technical-support-svgrepo-com.svg"; // Adjust the path as necessary
 
 const rotateAnimation = keyframes`
     0% { transform: rotate(0deg); }
@@ -52,7 +54,6 @@ const FloatingCallButton = () => {
       )
       .then(
         (response) => {
-         
           setOpenSnackbar(true);
           setIsFormVisible(false); // Close form after submission
           // Reset form fields

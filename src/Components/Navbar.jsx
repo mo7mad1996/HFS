@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai"; // استيراد الأيقونة الجديدة
-import logo from "@/assets/HFSLOGO.png";
+import logo from "@/assets/images/HFSLOGO.png";
 import { keyframes } from "@emotion/react";
 
 function Navbar() {

@@ -1,5 +1,5 @@
 // assets
-import logo from "@/assets/HFSLOGO.png";
+import logo from "@/assets/images/HFSLOGO.png";
 import membership from "@/assets/images/pages_assets/membership.png";
 import dashboard from "@/assets/images/pages_assets/dashboard.png";
 import wallet from "@/assets/images/pages_assets/wallet.png";
