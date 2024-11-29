@@ -12,9 +12,9 @@ import { Context } from "@/Context";
 import useApi from "@/api";
 
 // assets
-import copy_icon from "@/assets/pages_assets/copy_icon.png";
-import vector1 from "@/assets/pages_assets/vector1.png";
-import arrow from "@/assets/pages_assets/arrow.png";
+import copy_icon from "@/assets/images/pages_assets/copy_icon.png";
+import vector1 from "@/assets/images/pages_assets/vector1.png";
+import arrow from "@/assets/images/pages_assets/arrow.png";
 import check_icon from "@/assets/images/layout/check_icon.png";
 import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
 

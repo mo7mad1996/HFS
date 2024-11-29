@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
-import vector1 from "@/assets/pages_assets/vector1.png";
-import border from "@/assets/pages_assets/border.png";
-import jade from "@/assets/pages_assets/jade.png";
-import pearl from "@/assets/pages_assets/pearl.png";
-import sapphire from "@/assets/pages_assets/sapphire.png";
+import vector1 from "@/assets/images/pages_assets/vector1.png";
+import border from "@/assets/images/pages_assets/border.png";
+import jade from "@/assets/images/pages_assets/jade.png";
+import pearl from "@/assets/images/pages_assets/pearl.png";
+import sapphire from "@/assets/images/pages_assets/sapphire.png";
 
 function MembershipTier() {
   return (

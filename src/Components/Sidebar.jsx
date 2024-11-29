@@ -1,11 +1,11 @@
 // assets
 import logo from "@/assets/HFSLOGO.png";
-import membership from "@/assets/pages_assets/membership.png";
-import dashboard from "@/assets/pages_assets/dashboard.png";
-import wallet from "@/assets/pages_assets/wallet.png";
-import network from "@/assets/pages_assets/network.png";
-import transactions from "@/assets/pages_assets/transactions.png";
-import sidebar_bg from "@/assets/pages_assets/sidebar_bg.png";
+import membership from "@/assets/images/pages_assets/membership.png";
+import dashboard from "@/assets/images/pages_assets/dashboard.png";
+import wallet from "@/assets/images/pages_assets/wallet.png";
+import network from "@/assets/images/pages_assets/network.png";
+import transactions from "@/assets/images/pages_assets/transactions.png";
+import sidebar_bg from "@/assets/images/pages_assets/sidebar_bg.png";
 
 //
 import { Box, Typography } from "@mui/material";

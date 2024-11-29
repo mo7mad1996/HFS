@@ -9,7 +9,7 @@ import { Context } from "@/Context";
 // assets
 import check_icon from "@/assets/images/layout/check_icon.png";
 import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
-import home_bg from "@/assets/pages_assets/home_bg.png";
+import home_bg from "@/assets/images/pages_assets/home_bg.png";
 
 // component
 function CardComponent({ title, price, cardItems, cv, x, y, id }) {
