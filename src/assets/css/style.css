@@ -13,3 +13,10 @@ body {
 a {
   text-decoration: none;
 }
+
+.btn-gradient span {
+  background: linear-gradient(90deg, #4ed8f7 0%, #d057a1 100%);
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}

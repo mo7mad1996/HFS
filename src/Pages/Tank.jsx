@@ -78,6 +78,9 @@ function RenderMember({ member_name }) {
         justifyContent: "space-between",
         textAlign: "center",
         display: "flex",
+        "&:hover": {
+          bgcolor: "#794Bd922",
+        },
       }}
     >
       <Typography>{member_name}</Typography>

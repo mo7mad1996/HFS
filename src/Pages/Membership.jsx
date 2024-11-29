@@ -74,12 +74,17 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        p: "20px",
+        p: "20px 2.3em",
         borderRadius: "15px",
+        background: "#130E144D",
+
+        backdropFilter: "blur(26px)",
       }}
     >
-      <Box sx={{ textAlign: "center" }}>
-        <Typography sx={{ fontSize: "12px" }}>{title}</Typography>
+      <Box sx={{ textAlign: "center", width: "100%" }}>
+        <Typography sx={{ fontSize: { xs: "14px", xl: "20px" } }}>
+          {title}
+        </Typography>
         <Typography sx={{ fontSize: "14px" }}>
           {price}{" "}
           <Typography component="span" sx={{ fontSize: "8px" }}>
@@ -95,8 +100,8 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
         sx={{
           mt: "30px",
           display: "flex",
+          width: "100%",
           flexDirection: "column",
-          gap: "20px",
         }}
       >
         {cardItems.map((card, index) => {
@@ -112,26 +117,15 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
                 color: "#CACACA",
               }}
             >
-              <Box
-                sx={{ width: "7px", height: "7px" }}
-                component="img"
-                src={card.icon}
-              />
-
+              <Box sx={{ width: ".6em" }} component="img" src={card.icon} />
               <Typography
                 sx={{
                   width: "100%",
-                  fontSize: "11px",
-                  "&::after": !isLastItem && {
-                    content: '""',
-                    position: "absolute",
-                    bottom: "-10px",
-                    border: "1px solid #fff",
-                    width: "180px",
-                    left: "20px",
-
-                    borderColor: "#CACACA",
-                  },
+                  fontSize: "16px",
+                  position: "relative",
+                  color: "white",
+                  py: 1.1,
+                  borderBottom: isLastItem ? "" : "1px solid #cacaca",
                 }}
               >
                 {card.title}
@@ -149,8 +143,9 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
         sx={{
           textAlign: "center",
           mt: "30px",
-          backgroundColor: "#fff",
-          width: "146px",
+          mb: "20px",
+          // backgroundColor: "#fff",
+          width: "100%",
           height: "22px",
           borderRadius: "5px",
           display: "flex",
@@ -161,15 +156,18 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
         <Button
           className="btn-gradient"
           sx={{
-            fontSize: "10px",
+            fontSize: ".9em",
             fontFamily: "SF Pro Display",
-            fontWeight: "700",
+            width: "80%",
+            padding: ".3em",
+            background: "#FFFFFF",
+            borderRadius: 2,
           }}
           onClick={() => {
             subscribe(id);
           }}
         >
-          Purchase NOW
+          <span>Purchase NOW</span>
         </Button>
       </Box>
     </Box>
