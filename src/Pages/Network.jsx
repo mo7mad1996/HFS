@@ -15,7 +15,7 @@ import toast from "react-hot-toast";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Context } from "@/Context";
 
-import OrgChartNode from "@/components/network/OrgChartNode";
+import OrgChartNode from "@/components/network/OrgChartNode/index.jsx";
 
 const Network = () => {
   // config
@@ -28,30 +28,28 @@ const Network = () => {
     user_name: auth_user.name,
     rank: auth_user.email,
     user_image: auth_user.image,
-    left_leg_member: null,
-    right_leg_member: null,
   });
 
   // methods
-  const getNetWorkData = async () => {
-    try {
-      const res = await api.get("/direct-downline-members");
+  // const getNetWorkData = async () => {
+  //   try {
+  //     const res = await api.get("/direct-downline-members");
 
-      const data = await res.data.members;
-      setUser((u) => ({
-        ...u,
-        right_leg_member: data.right_leg_member,
-        left_leg_member: data.left_leg_member,
-      }));
-    } catch (err) {
-      toast.error(err.response?.data?.message);
-      console.error(err);
-    }
-  };
+  //     const data = await res.data.members;
+  //     setUser((u) => ({
+  //       ...u,
+  //       right_leg_member: data.right_leg_member,
+  //       left_leg_member: data.left_leg_member,
+  //     }));
+  //   } catch (err) {
+  //     toast.error(err.response?.data?.message);
+  //     console.error(err);
+  //   }
+  // };
 
-  useEffect(() => {
-    getNetWorkData();
-  }, []);
+  // useEffect(() => {
+  //   getNetWorkData();
+  // }, []);
 
   return (
     <div

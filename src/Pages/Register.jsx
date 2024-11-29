@@ -32,7 +32,7 @@ import {
 
 const Register = () => {
   // config
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   // data
   const steps = [
@@ -139,9 +139,9 @@ const Register = () => {
     try {
       const formDataWithImage = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
-        formDataWithImage.append(key, value);
+        if (value) formDataWithImage.append(key, value);
       });
-      formDataWithImage.append("image", formData.image);
+      // formDataWithImage.append("image", formData.image);
 
       const res = await axios.post(`${baseUrl}/register`, formDataWithImage, {
         headers: {
