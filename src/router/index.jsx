@@ -13,6 +13,7 @@ import Network from "@/Pages/Network";
 import CustomCard from "@/Pages/WalletCard";
 import AllTransactions from "@/Pages/AllTransaction";
 import Test from "@/Pages/Test";
+import Tank from "@/Pages/Tank";
 
 // routes
 const router = createBrowserRouter([
@@ -25,8 +26,9 @@ const router = createBrowserRouter([
       { path: "/Membership", element: <Membership /> },
       { path: "/MembershipTier", element: <MembershipTier /> },
       { path: "/network", element: <Network /> },
-      { path: "/wallet", element: <CustomCard /> },
       { path: "/Transactions", element: <AllTransactions /> },
+      { path: "/wallet", element: <CustomCard /> },
+      { path: "/tank", element: <Tank /> },
     ],
   },
   { path: "/register", element: <Register /> },

@@ -14,6 +14,9 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "@/Context";
 import { motion } from "framer-motion";
 
+// css
+import css from "./style.module.css";
+
 function Sidebar() {
   const { sidebarOpen, setSidebarOpen } = useContext(Context);
   const sidebarRef = useRef(null);
@@ -26,6 +29,7 @@ function Sidebar() {
     { name: "Wallet", path: "/wallet", icon: wallet },
     { name: "Network", path: "/Network", icon: network },
     { name: "Transactions", path: "/Transactions", icon: transactions },
+    { name: "TANK", path: "/tank", icon: transactions },
   ]);
 
   useEffect(() => {
@@ -101,7 +105,11 @@ function Sidebar() {
             component={motion.div}
             sx={{ cursor: "pointer" }}
             onClick={(e) => handleLinkClick(e, link.path)}
-            initial={{ scale: 1, x: 0 }}
+            initial={{
+              scale: 1,
+              x: 0,
+              background: `linear-gradient(0deg, transparent, transparent)`,
+            }}
             whileHover={{
               scale: 1.1,
               x: 20,

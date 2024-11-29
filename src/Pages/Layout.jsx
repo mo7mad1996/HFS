@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import NavbarPages from "../Components/NavbarPages";
-import Sidebar from "../Components/Sidebar";
+import Sidebar from "../Components/layout/Sidebar/index.jsx";
 import { Outlet } from "react-router-dom";
 
 function Layout() {
