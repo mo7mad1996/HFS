@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import vector3 from "@/assets/vector3.png";
-import vector4 from "@/assets/vector4.png";
+import vector3 from "@/assets/images/vector3.png";
+import vector4 from "@/assets/images/vector4.png";
 
 function OurStory() {
   return (
