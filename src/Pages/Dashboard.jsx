@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 // components
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 
 // context || Api
 import { Context } from "@/Context";
@@ -21,6 +21,7 @@ import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
 function Dashboard() {
   // config
   const api = useApi();
+  let { sidebarOpen, user } = useContext(Context);
   const navigate = useNavigate();
 
   // data
@@ -32,6 +33,7 @@ function Dashboard() {
     left_downlines_count: "-",
     right_downlines_count: "-",
   });
+  const referral = `${window.location.origin}/referral?u=${user.id}`;
 
   const rows = useMemo(
     () => [
@@ -58,8 +60,6 @@ function Dashboard() {
     },
   };
 
-  let { sidebarOpen } = useContext(Context);
-
   // methods
   const getVolumes = async () => {
     try {
@@ -85,6 +85,10 @@ function Dashboard() {
       toast.error(err.response?.data?.message);
       console.log(err);
     }
+  };
+
+  const copyReferral = () => {
+    navigator.clipboard.writeText(referral);
   };
 
   // on render
@@ -263,18 +267,26 @@ function Dashboard() {
             <Box sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
               <Box
                 sx={{
-                  width: "auto",
+                  width: "228px",
                   height: "38px",
-                  bordderRadius: "5px",
+                  borderRadius: "5px",
                   backgroundColor: "#FFFFFF",
                   display: "flex",
-                  justifyContent: "sstart",
+                  justifyContent: "start",
                   alignItems: "center",
                   px: "10px",
                 }}
               >
-                <Typography sx={{ color: "#000" }}>
-                  https://www.google.com/s.....
+                <Typography
+                  sx={{
+                    backgroundColor: "#FFFFFF",
+                    color: "black",
+                    mask: "linear-gradient(90deg, black 70%, transparent)",
+                  }}
+                >
+                  <div className="oneLine" style={{ width: "210px" }}>
+                    {referral}
+                  </div>
                 </Typography>
               </Box>
               <Box
@@ -288,13 +300,13 @@ function Dashboard() {
                   alignItems: "center",
                 }}
               >
-                <Box sx={{ width: "18px", height: "18px" }}>
+                <IconButton onClick={copyReferral}>
                   <Box
                     component="img"
                     src={copy_icon}
-                    sx={{ width: "100%", height: "100%" }}
+                    sx={{ width: "18px", height: "18px" }}
                   />
-                </Box>
+                </IconButton>
               </Box>
             </Box>
           </Box>
