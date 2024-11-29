@@ -15,8 +15,8 @@ import useApi from "@/api";
 import copy_icon from "@/assets/pages_assets/copy_icon.png";
 import vector1 from "@/assets/pages_assets/vector1.png";
 import arrow from "@/assets/pages_assets/arrow.png";
-import x_mark_icon from "@/assets/x_mark_icon.png";
-import check_icon from "@/assets/check_icon.png";
+import check_icon from "@/assets/images/layout/check_icon.png";
+import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
 
 function Dashboard() {
   // config

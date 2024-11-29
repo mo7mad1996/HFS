@@ -1,7 +1,7 @@
 // Loader.js
 import React from "react";
 import { Box } from "@mui/material";
-import loadingGif from "@/assets/loader.gif"; // Import the GIF from assets
+import loadingGif from "@/assets/images/layout/loader.gif"; // Import the GIF from assets
 
 const Loader = () => (
   <Box

@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
 import { Box, Button, Typography } from "@mui/material";
-import home_bg from "@/assets/pages_assets/home_bg.png";
-import check_icon from "@/assets/check_icon.png";
-import x_mark_icon from "@/assets/x_mark_icon.png";
 import { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Context } from "@/Context";
 
+// assets
+import check_icon from "@/assets/images/layout/check_icon.png";
+import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
+import home_bg from "@/assets/pages_assets/home_bg.png";
+
+// component
 function CardComponent({ title, price, cardItems, cv, x, y, id }) {
   let { baseUrl } = useContext(Context);
   async function subscribe(id) {

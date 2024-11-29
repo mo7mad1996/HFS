@@ -1,10 +1,12 @@
-import { Box, Typography } from "@mui/material";
-import userImg from "@/assets/pages_assets/user.png";
-
-import { IoMenuOutline } from "react-icons/io5";
 import { useContext } from "react";
+import { Box, Typography } from "@mui/material";
+import { IoMenuOutline } from "react-icons/io5";
 import { Context } from "@/Context";
 
+// assets
+import userImg from "@/assets/images/placeholder/user.png";
+
+// component
 function NavbarPages() {
   let { sidebarOpen, setSidebarOpen } = useContext(Context);
   return (

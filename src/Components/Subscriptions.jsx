@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { Box, Button, Typography } from "@mui/material";
-import check_icon from "@/assets/check_icon.png";
-import x_mark_icon from "@/assets/x_mark_icon.png";
 import { useState } from "react";
+
+// assets
+import check_icon from "@/assets/images/layout/check_icon.png";
+import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
 
 function CardComponent({ title, price, cardItems }) {
   return (
