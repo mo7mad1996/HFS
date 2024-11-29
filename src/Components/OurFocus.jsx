@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import vector from "@/assets/vector.png";
 import plastine_flag from "@/assets/BlackHole.gif";
 import BGGALAXY from "@/assets/19328015_MotionElements_blue-earth-hologram-vimage.gif";
-import verctor2 from "@/assets/vector2.png";
+import verctor2 from "@/assets/image/vector2.png";
 import vector1 from "@/assets/bg1.webp";
 import { keyframes } from "@mui/system";
 
