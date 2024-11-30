@@ -87,8 +87,13 @@ function Dashboard() {
     }
   };
 
-  const copyReferral = () => {
-    navigator.clipboard.writeText(referral);
+  const copyReferral = async () => {
+    try {
+      await navigator.clipboard.writeText(referral);
+      toast.success("Referral Link has been copied to clipboard");
+    } catch (error) {
+      toast.error("Can't copy the `Referral Link`");
+    }
   };
 
   // on render
