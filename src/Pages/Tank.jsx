@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useContext, useEffect, useState } from "react";
 import useApi from "@/api";
 import { Box, Button, Typography } from "@mui/material";
@@ -58,7 +59,7 @@ function Tank() {
           <Typography sx={{ fontSize: "19px" }}>Your ID: {user.id}</Typography>
         </Box>
         {tanks.map((member, n) => (
-          <RenderMember key={n} {...member} />
+          <RenderMember key={n} {...member} getTanks={getTanks} />
         ))}
       </Box>
     </div>
@@ -67,7 +68,28 @@ function Tank() {
 
 export default Tank;
 
-function RenderMember({ member_name }) {
+function RenderMember({ member_name, member_id, getTanks }) {
+  const api = useApi();
+  const [loading, setLoading] = useState(false);
+
+  const append = async (placement) => {
+    try {
+      setLoading(true);
+      const res = await api.post("/place-referral", {
+        placement,
+        referral_id: member_id,
+      });
+
+      console.log(res);
+      getTanks();
+    } catch (err) {
+      toast.error(err.response?.data?.messaage);
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -91,10 +113,20 @@ function RenderMember({ member_name }) {
             gap: "1em",
           }}
         >
-          <Button variant="outlined" color="secondary">
+          <Button
+            variant="outlined"
+            color="secondary"
+            disabled={loading}
+            onClick={() => append("left")}
+          >
             To Left
           </Button>
-          <Button variant="outlined" color="primary">
+          <Button
+            variant="outlined"
+            color="primary"
+            disabled={loading}
+            onClick={() => append("right")}
+          >
             To Right
           </Button>
         </Box>

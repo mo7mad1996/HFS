@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Typography, Box, IconButton } from "@mui/material";
+import { Typography, Box, IconButton, Avatar } from "@mui/material";
 import { ExpandMore, Remove } from "@mui/icons-material";
 
 // css
@@ -93,11 +93,12 @@ const OrgChartNode = ({ id, user_name, rank, user_image, r, l }) => {
           </Typography>
         </Box>
 
-        <Box
+        <Avatar
+          src={user_image}
+          alt={`${user_name}'s picture`}
           sx={{
             width: "80px",
             height: "80px",
-            borderRadius: "50%",
             backgroundColor: "#fff",
             position: "absolute",
             top: "30%",
@@ -105,13 +106,17 @@ const OrgChartNode = ({ id, user_name, rank, user_image, r, l }) => {
             transform: "translate(-50%,-50%)",
             overflow: "hidden",
           }}
+        />
+        {/* 
+        <Box
+         
         >
           <img
             src={user_image || UserPlaceholder}
             alt={`${name}'s picture`}
             style={{ width: "100%", height: "100%", borderRadius: "50%" }}
           />
-        </Box>
+        </Box> */}
       </Box>
       {(left_leg_member || right_leg_member) && (
         <IconButton

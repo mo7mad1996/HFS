@@ -481,7 +481,7 @@ function Step3({ setFormData }) {
           />
         </div>
       ) : (
-        <div>
+        <div className="avatar_container">
           <IconButton onClick={deleteFile}>
             <BookmarkRemoveSharp />
           </IconButton>

@@ -22,9 +22,7 @@ function NavbarPages() {
     >
       <Box
         sx={{ fontSize: "30px" }}
-        onClick={() => {
-          setSidebarOpen((prev) => !prev);
-        }}
+        onClick={() => setSidebarOpen((prev) => !prev)}
       >
         <IoMenuOutline />
       </Box>

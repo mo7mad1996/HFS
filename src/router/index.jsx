@@ -14,6 +14,7 @@ import CustomCard from "@/Pages/WalletCard";
 import AllTransactions from "@/Pages/AllTransaction";
 import Test from "@/Pages/Test";
 import Tank from "@/Pages/Tank";
+import Referral from "@/Pages/Referral";
 
 // routes
 const router = createBrowserRouter([
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
   { path: "/register", element: <Register /> },
   { path: "/newlogin", element: <NewLogin /> },
   { path: "/login", element: <Login /> },
+  { path: "/referral", element: <Referral /> },
   { path: "/test", element: <Test /> },
 ]);
 const Router = () => <RouterProvider router={router} />;
