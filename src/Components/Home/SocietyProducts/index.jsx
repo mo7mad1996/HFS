@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
 
+import css from "./style.module.css";
+
 // assets
 import blankImg from "@/assets/images/blank.png";
 import googlePlay from "@/assets/images/googleplay.png";
@@ -19,12 +21,11 @@ function SocietyProducts() {
     <Box>
       <Box className="container">
         <Typography
+          className={css.my_title}
           sx={{
-            fontFamily: "Tanseek Modern Pro Arabic",
-            fontSize: "75px",
-            letterSpacing: "50px",
-            textAlign: "center",
-            mb: "100px",
+            fontSize: { xs: "50px ", md: "75px" },
+            letterSpacing: { xs: "20px", md: "50px" },
+            my: 5,
           }}
         >
           SOCIETY
@@ -33,29 +34,14 @@ function SocietyProducts() {
         </Typography>
         {/* card 1 */}
         <Box
+          className={css.card}
           sx={{
-            width: "1099px",
-            height: "522px",
-            mx: "auto",
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "#000",
-            justifyContent: "space-between",
-            mt: "40px",
-            borderRadius: "25px",
             backgroundImage: `url(${cardsBg})`,
-            backgroundSize: "cover",
-            objectFit: "cover",
-            position: "sticky",
-            top: "100px",
-            px: "30px",
-            overflow: "hidden",
           }}
         >
           {/* left side */}
           <Box
             sx={{
-              width: "45%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -64,16 +50,19 @@ function SocietyProducts() {
           >
             <Typography
               variant="h4"
-              sx={{ fontSize: "20px", letterSpacing: "11px", zIndex: 4 }}
+              sx={{ fontSize: ".8em", letterSpacing: "11px", zIndex: 4 }}
             >
               EDUCATIONAL
             </Typography>
             <Typography
               variant="h4"
               sx={{
-                fontSize: "30px",
-                lineHeight: "10.35px",
+                fontSize: "1,2em",
+
+                // lineHeight: "10.35px",
                 mb: "40px",
+                position: "relative",
+                zIndex: 1,
                 fontWeight: "700",
                 letterSpacing: "10px",
               }}
@@ -81,14 +70,8 @@ function SocietyProducts() {
               TRADING SOCIETY
             </Typography>
 
-            <Typography
-              sx={{
-                fontWeight: "700",
-                color: "#ABABAB",
-                lineHeight: "21.48px",
-              }}
-            >
-              <Typography component="span" sx={{ color: "#E3CB86" }}>
+            <Typography className={css.text} sx={{ width: { md: "45%" } }}>
+              <Typography component="span" sx={{ color: "#E3CB86", pr: "1em" }}>
                 TRADING SOCIETY
               </Typography>{" "}
               is more than just an educational platform; it’s a gateway to
@@ -99,18 +82,19 @@ function SocietyProducts() {
             </Typography>
 
             <Box
+              className={css.cardBtns}
               sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                mt: "20px",
+                flexDirection: { xs: "column", md: "row", width: "100%" },
               }}
             >
               <Box
+                component="a"
+                href="https://play.google.com/store/search?q=trading%20society&c=apps"
+                target="_blank"
                 sx={{
-                  width: "172px",
-                  height: "48px",
+                  flex: 1,
                   cursor: "pointer",
+                  display: "block",
                   transition: "400ms transform",
                   "&:hover": {
                     transform: "scale(1.2)",
@@ -120,13 +104,12 @@ function SocietyProducts() {
                 <Box
                   component="img"
                   src={googlePlay}
-                  sx={{ width: "100%", height: "100%" }}
+                  sx={{ height: "100%", width: "100%" }}
                 />
               </Box>
               <Box
                 sx={{
-                  width: "172px",
-                  height: "48px",
+                  flex: 1,
                   cursor: "pointer",
                   // zIndex: "100",
                   transition: "400ms transform",
@@ -138,26 +121,11 @@ function SocietyProducts() {
                 <Box
                   component="img"
                   src={appleStore}
-                  sx={{ width: "100%", height: "100%" }}
+                  sx={{ width: "100%", height: "100%", display: "block" }}
                 />
               </Box>
             </Box>
           </Box>
-
-          {/* right side */}
-          {/* <Box
-            sx={{
-              width: "432px",
-              height: "366px",
-              backgroundImage: `url(${blankImg})`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "50px",
-            }}
-          >
-            432 x 366
-          </Box> */}
 
           <Box
             sx={{
@@ -211,29 +179,14 @@ function SocietyProducts() {
 
         {/* card 2 */}
         <Box
+          className={css.card}
           sx={{
-            width: "1099px",
-            height: "522px",
-            mx: "auto",
-            display: "flex",
-            alignItems: "center",
-            backgroundColor: "#000",
-            justifyContent: "space-between",
-            mt: "40px",
-            borderRadius: "25px",
             backgroundImage: `url(${cardsB3})`,
-            backgroundSize: "cover",
-            objectFit: "cover",
-            position: "sticky",
-            top: "0",
-            px: "30px",
-            overflow: "hidden",
           }}
         >
           {/* left side */}
           <Box
             sx={{
-              width: "45%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -242,16 +195,14 @@ function SocietyProducts() {
           >
             <Typography
               variant="h4"
-              sx={{ fontSize: "20px", letterSpacing: "11px" }}
+              sx={{ fontSize: ".8em", letterSpacing: "11px" }}
             >
               EDUCATIONAL
             </Typography>
             <Typography
               variant="h4"
               sx={{
-                fontSize: "30px",
-                lineHeight: "10.35px",
-                mb: "40px",
+                fontSize: "1.3em",
                 fontWeight: "700",
                 letterSpacing: "10px",
               }}
@@ -259,16 +210,16 @@ function SocietyProducts() {
               CYPER SOCIETY
             </Typography>
 
-            <Typography
-              sx={{
-                fontWeight: "700",
-                color: "#ABABAB",
-                lineHeight: "21.48px",
-              }}
-            >
-              <Typography component="span" sx={{ color: "#A26FC4" }}>
+            <Typography className={css.text} sx={{ width: { md: "45%" } }}>
+              <Typography
+                component="span"
+                sx={{
+                  color: "#A26FC4",
+                  pr: "1em",
+                }}
+              >
                 Cyper Society
-              </Typography>{" "}
+              </Typography>
               is your ultimate learning platform designed to equip you with the
               skills needed to excel in the world of programming. From mastering
               the intricacies of cybersecurity to diving deep into embedded
@@ -278,18 +229,19 @@ function SocietyProducts() {
             </Typography>
 
             <Box
+              className={css.cardBtns}
               sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                mt: "20px",
+                flexDirection: { xs: "column", md: "row", width: "100%" },
               }}
             >
               <Box
+                component="a"
+                href="https://play.google.com/store/search?q=trading%20society&c=apps"
+                target="_blank"
                 sx={{
-                  width: "172px",
-                  height: "48px",
+                  flex: 1,
                   cursor: "pointer",
+                  display: "block",
                   transition: "400ms transform",
                   "&:hover": {
                     transform: "scale(1.2)",
@@ -299,13 +251,12 @@ function SocietyProducts() {
                 <Box
                   component="img"
                   src={googlePlay}
-                  sx={{ width: "100%", height: "100%" }}
+                  sx={{ width: "100%", height: "100%", display: "block" }}
                 />
               </Box>
               <Box
                 sx={{
-                  width: "172px",
-                  height: "48px",
+                  width: "100%",
                   cursor: "pointer",
                   // zIndex: "100",
                   transition: "400ms transform",
@@ -317,26 +268,13 @@ function SocietyProducts() {
                 <Box
                   component="img"
                   src={appleStore}
-                  sx={{ width: "100%", height: "100%" }}
+                  sx={{ width: "100%", height: "100%", display: "block" }}
                 />
               </Box>
             </Box>
           </Box>
 
           {/* right side */}
-          {/* <Box
-            sx={{
-              width: "432px",
-              height: "366px",
-              backgroundImage: `url(${blankImg})`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "50px",
-            }}
-          >
-            432 x 366
-          </Box> */}
 
           <Box
             sx={{

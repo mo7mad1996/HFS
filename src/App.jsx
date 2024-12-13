@@ -21,7 +21,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (isLoading) return <Loader />;
+  // if (isLoading) return <Loader />;
   return (
     <ContextProvider>
       <Router />

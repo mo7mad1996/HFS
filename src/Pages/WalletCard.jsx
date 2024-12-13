@@ -16,7 +16,13 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Context } from "@/Context";
 
+import useApi from "@/api";
+
 const CustomCard = () => {
+  // setup
+  const api = useApi();
+  const [loading, setLoading] = useState(false);
+
   let [amount, setAmount] = useState(0);
   const [wallet, setWallet] = useState("");
   const [isWalletVisible, setIsWalletVisible] = useState(false);
@@ -26,31 +32,27 @@ const CustomCard = () => {
 
   async function getWallet() {
     try {
-      let res = await axios.get(`${baseUrl}/current-balance`, {
-        headers: {
-          Authorization:
-            "Bearer 6|eP9AgEvNHPN4TEgr9bk952b3SnWlaN2o5LSMB0u3212be622",
-        },
-      });
-      setWallet(res.data.message);
+      setLoading(true);
+      let res = await api.get(`/current-balance`);
+
+      const data = res.data.message;
+
+      setWallet(data);
       if (wallet) {
         setNumberInWallet(wallet?.split(" ").splice(5, 6)[0]);
       }
     } catch (err) {
       console.error("Error fetching wallet balance:", err);
+    } finally {
+      setLoading(false);
     }
   }
 
   async function getWithdrawal(amount) {
-    let res = await axios.post(
-      `${baseUrl}/withdrawa`,
-      { transaction_type: "withdrawal", amount: amount },
-      {
-        headers: {
-          Authorization: `Bearer 5|YPN5XVpoTXraDLaEjcIAMX6i08OrlrnagNvsXr1X080d0e24`,
-        },
-      }
-    );
+    let res = await api.post(`/withdrawa`, {
+      transaction_type: "withdrawal",
+      amount: amount,
+    });
 
     if (numberInWallet < amount) {
       Swal.fire({

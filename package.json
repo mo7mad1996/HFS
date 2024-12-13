@@ -26,6 +26,7 @@
     "emailjs-com": "^3.2.0",
     "express": "^4.21.1",
     "framer-motion": "^11.11.10",
+    "gsap": "^3.12.5",
     "jspdf": "^2.5.2",
     "lucide-react": "^0.454.0",
     "nodemailer": "^6.9.16",

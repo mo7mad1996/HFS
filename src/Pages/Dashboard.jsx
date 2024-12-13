@@ -166,7 +166,7 @@ function Dashboard() {
             }}
           >
             <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              <Typography>489,000</Typography>
+              <Typography> 0</Typography>
               <Typography>{volume.left_leg_volume}</Typography>
               <Typography>{count.left_downlines_count}</Typography>
             </Box>
@@ -178,7 +178,7 @@ function Dashboard() {
             </Box>
 
             <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              <Typography>1,755,100</Typography>
+              <Typography>0</Typography>
               <Typography>{volume.right_leg_volume}</Typography>
               <Typography>{count.right_downlines_count}</Typography>
             </Box>
@@ -321,13 +321,13 @@ function Dashboard() {
           component={motion.div}
           initial={{ x: 0, y: 0, rotate: 0, scale: 1 }}
           whileHover={{
-            y: -200,
-            x: -400,
-            rotate: 360,
-            scale: 2,
+            // y: -200,
+            // x: -400,
+            // rotate: 360,
+            // scale: 2,
             backgroundColor: "#2B6145",
           }}
-          transition={{ duration: 2, type: "easeInOut" }}
+          transition={{ duration: 0.2, type: "easeInOut" }}
           sx={{
             width: "355px",
             height: "163px",

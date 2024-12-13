@@ -18,7 +18,7 @@ function CardComponent({ title, price, cardItems }) {
         alignItems: "center",
         p: "20px 2.3em",
         borderRadius: "15px",
-        background: "#3416394D",
+        background: "#130E4D",
 
         backdropFilter: "blur(26px)",
       }}
@@ -69,7 +69,7 @@ function CardComponent({ title, price, cardItems }) {
                     position: "absolute",
                     bottom: "-10px",
                     border: "1px solid #fff",
-                    width: "85%",
+                    width: "90%",
                     left: "20px",
                     fontSize: "11px",
                     borderColor: "#CACACA",
@@ -206,13 +206,7 @@ function Subscriptions() {
     <Box>
       <Box className="container" sx={{ width: "85%" }}>
         <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            mt: 5,
-            gap: 4,
-          }}
+          sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
         >
           {cardLists.map((card, index) => (
             <CardComponent

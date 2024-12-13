@@ -1,13 +1,14 @@
 import { Box } from "@mui/material";
-import Navbar from "../Components/Navbar";
-import About from "../Components/About";
-import OurFocus from "../Components/OurFocus";
-import OurStory from "../Components/OurStory";
+import Navbar from "@/Components/layout/Navbar";
+import About from "@/Components/Home/About";
+import OurFocus from "@/Components/Home/OurFocus";
+import OurStory from "@/Components/Home/OurStory";
 import PeaceOfArts from "../Components/PeaceOfArts";
-import SocietyProducts from "../Components/SocietyProducts";
+import SocietyProducts from "@/Components/Home/SocietyProducts";
 import HfsSociety from "../Components/HfsSociety";
 import FloatingCallButton from "../Components/FloatingCallButton";
 import Subscriptions from "../Components/Subscriptions";
+import Footer from "@/Components/Home/Footer";
 
 function Home() {
   return (
@@ -21,6 +22,7 @@ function Home() {
       <HfsSociety />
       <Subscriptions />
       <FloatingCallButton />
+      <Footer />
     </Box>
   );
 }

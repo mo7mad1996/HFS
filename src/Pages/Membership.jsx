@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Context } from "@/Context";
+import useApi from "@/api";
 
 // assets
 import check_icon from "@/assets/images/layout/check_icon.png";
@@ -13,18 +14,13 @@ import home_bg from "@/assets/images/pages_assets/home_bg.png";
 
 // component
 function CardComponent({ title, price, cardItems, cv, x, y, id }) {
+  // config
+  const api = useApi();
+
   let { baseUrl } = useContext(Context);
   async function subscribe(id) {
     try {
-      let res = await axios.post(
-        `${baseUrl}/subscribe`,
-        { package_id: id },
-        {
-          headers: {
-            Authorization: `Bearer 6|eP9AgEvNHPN4TEgr9bk952b3SnWlaN2o5LSMB0u3212be622`, // استخدم `Authorization` للتوكن
-          },
-        }
-      );
+      let res = await api.post(`${baseUrl}/subscribe`, { package_id: id });
 
       Swal.fire({
         title: "Good job!",
@@ -34,11 +30,11 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
     } catch (error) {
       console.error(
         "Error in subscription:",
-        error.response?.data || error.message
+        error.response?.data?.message || error.message
       );
       Swal.fire({
-        title: "",
-        text: "Insufficient funds",
+        title: "Insufficient funds",
+        text: error.response?.data?.message,
         icon: "error",
       });
     }

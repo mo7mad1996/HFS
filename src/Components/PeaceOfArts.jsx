@@ -4,6 +4,8 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import { keyframes } from "@mui/system";
 
+import css from "./Home/OurStory/style.module.css";
+
 // import { Autoplay } from "swiper"; // Add Autoplay here
 // import peace_of_arts_img from "@/assets/peace_of_arts_img.png";
 import img1 from "@/assets/images/peace_of_art_imgs/img1.png";
@@ -30,19 +32,6 @@ const Fade = keyframes`
 
 function PeaceOfArts() {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
-  // Define different widths for each image
-  const widths = [
-    "150px",
-    "300px",
-    "150px",
-    "300px",
-    "150px",
-    "300px",
-    "150px",
-    "300px",
-    "150px",
-    "300px",
-  ];
 
   return (
     <Box
@@ -57,7 +46,7 @@ function PeaceOfArts() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          // height: "100vh",
         },
       }}
     >
@@ -69,7 +58,7 @@ function PeaceOfArts() {
           top: "50%",
           left: "75%",
           width: "30%",
-          height: "60%",
+          // height: "60%",
           zIndex: "-1",
           animation: `${Fade} 5s ease-in-out infinite`, // Adjust duration as needed
         }}
@@ -82,7 +71,7 @@ function PeaceOfArts() {
           bottom: "70%",
           right: "80%",
           width: "30%",
-          height: "60%",
+          // height: "60%",
           zIndex: "-1",
           animation: `${Fade} 5s ease-in-out infinite`, // Adjust duration as needed
         }}
@@ -95,19 +84,18 @@ function PeaceOfArts() {
           top: "80%",
           right: "85%",
           width: "20%",
-          height: "40%",
+          // height: "40%",
           zIndex: "-1",
         }}
       />
 
       {/* Title */}
       <Typography
+        className={css.my_title}
         sx={{
-          fontFamily: "Tanseek Modern Pro Arabic",
-          fontSize: "75px",
-          letterSpacing: "50px",
-          textAlign: "center",
-          mb: "30px",
+          fontSize: { xs: "50px ", md: "75px" },
+          letterSpacing: { xs: "20px", md: "50px" },
+          my: 5,
         }}
       >
         PEACE OF ART
@@ -115,42 +103,67 @@ function PeaceOfArts() {
       {/* pics slider */}
       <Box
         sx={{
-          backgroundColor: "#19151d",
-          height: "74vh",
+          my: 5,
+          overflow: "hidden",
           width: "90%",
+          backgroundColor: "#19151d",
           borderRadius: "20px",
           display: "flex",
-          justifyContent: "space-between",
-          gap: "10px",
-          alignItems: "center",
           flexDirection: "column",
-          overflow: "hidden",
-          // mb: "30px",
+          gap: "10px",
         }}
       >
         <Box width={"100%"} pt={"0px"}>
           <Swiper
             modules={[Autoplay]}
             autoplay={{ delay: 0, disableOnInteraction: false }}
-            spaceBetween={20}
-            slidesPerView={6}
-            loop={true} // Enable looping
-            dir="ltr" // Ensures LTR direction
-            rtl={false} // Disable RTL mode if set in global styles
-            speed={15000} // Set a smooth transition speed (1000ms)
-            style={{ width: "100%", height: "100%" }}
+            spaceBetween={"10px"}
+            slidesPerView="auto"
+            loop={true}
+            dir="ltr"
+            speed={10000}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
           >
             {images.map((src, index) => (
-              <SwiperSlide key={index}>
-                <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <SwiperSlide
+                key={index}
+                style={{
+                  width: "300px",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    position: "relative",
+                    overflow: "hidden",
+                    borderRadius: "10px",
+                  }}
+                >
                   <img
                     src={src}
                     alt={`Slide ${index + 1}`}
                     style={{
-                      width: widths[index],
-                      height: "253px",
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
                       objectFit: "cover",
-                      borderRadius: "10px",
+                      zIndex: 1,
+                      filter: "blur(4px)",
+                    }}
+                  />
+                  <img
+                    src={src}
+                    alt={`Slide ${index + 1}`}
+                    style={{
+                      width: "100%",
+                      height: "253px",
+                      position: "relative",
+                      zIndex: 2,
+                      objectFit: "contain",
                     }}
                   />
                 </Box>
@@ -162,7 +175,6 @@ function PeaceOfArts() {
         <Box
           sx={{
             width: { xs: "100%", md: "100%" },
-            height: "100vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -172,24 +184,50 @@ function PeaceOfArts() {
             modules={[Autoplay]}
             autoplay={{ delay: 0, disableOnInteraction: false }}
             spaceBetween={20}
-            slidesPerView={6}
+            slidesPerView="auto"
             loop={true} // Enable looping
             dir="rtl" // Ensures LTR direction
-            rtl={false} // Disable RTL mode if set in global styles
-            speed={15000} // Set a smooth transition speed (1000ms)
+            rtl="true"
+            speed={12000}
             style={{ width: "100%", height: "100%" }}
           >
             {images.map((src, index) => (
-              <SwiperSlide key={index}>
-                <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <SwiperSlide
+                key={index}
+                style={{
+                  width: "300px",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    position: "relative",
+                    overflow: "hidden",
+                    borderRadius: "10px",
+                  }}
+                >
                   <img
                     src={src}
                     alt={`Slide ${index + 1}`}
                     style={{
-                      width: widths[index],
-                      height: "253px",
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
                       objectFit: "cover",
-                      borderRadius: "10px",
+                      zIndex: 1,
+                      filter: "blur(4px)",
+                    }}
+                  />
+                  <img
+                    src={src}
+                    alt={`Slide ${index + 1}`}
+                    style={{
+                      width: "100%",
+                      height: "253px",
+                      position: "relative",
+                      zIndex: 2,
+                      objectFit: "contain",
                     }}
                   />
                 </Box>

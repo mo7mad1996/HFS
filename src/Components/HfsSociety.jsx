@@ -9,7 +9,13 @@ import companyCallCard from "@/assets/images/company_call.png";
 import "swiper/css";
 function HfsSociety() {
   return (
-    <Box>
+    <Box
+      className="container"
+      sx={{
+        width: "100vw",
+        overflow: "hidden !important;",
+      }}
+    >
       <Box
         sx={{
           width: "100%",
@@ -28,7 +34,11 @@ function HfsSociety() {
         </Box>
 
         <Typography
-          sx={{ fontSize: "50px", textAlign: "center", fontWeight: "700" }}
+          sx={{
+            fontSize: { xs: "30px", md: "50px" },
+            textAlign: "center",
+            fontWeight: "700",
+          }}
         >
           Want to join the community?
           <br />
@@ -39,17 +49,17 @@ function HfsSociety() {
       <Box sx={{ pt: "150px" }}>
         <Swiper
           spaceBetween={50}
-          slidesPerView={2.5}
+          slidesPerView="auto"
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
         >
           {[1, 2, 3].map((_, index) => {
             return (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} style={{ width: "min(100%, 420px)" }}>
                 <Box
                   component="img"
                   src={companyCallCard}
-                  sx={{ width: "100%", height: "100%" }}
+                  sx={{ width: "100%", display: "block" }}
                 />
               </SwiperSlide>
             );

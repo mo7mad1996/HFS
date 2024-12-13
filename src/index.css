@@ -1,12 +1,6 @@
 @import url("@/assets/css/fonts.css");
 @import url("@/assets/css/style.css");
 
-.container {
-  width: 95%;
-  margin: 0 auto;
-  padding-top: 50px;
-}
-
 .navbar {
   backdrop-filter: blur(15.699999809265137px);
   background: #140f152b;
@@ -19,7 +13,7 @@
   );
 }
 .card {
-  backdrop-filter: blur(38.599998474121094px);
+  backdrop-filter: blur(40px);
   background: #1515157a;
 }
 

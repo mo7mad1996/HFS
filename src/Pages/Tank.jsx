@@ -1,8 +1,16 @@
 import toast from "react-hot-toast";
 import { useContext, useEffect, useState } from "react";
 import useApi from "@/api";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, Pagination } from "@mui/material";
 import { Context } from "@/Context";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 const background = "linear-gradient(280.13deg, #DC4B9A 40.3%, #51D5F5 59.7%)";
 
@@ -13,15 +21,19 @@ function Tank() {
 
   // data
   const [tanks, setTanks] = useState([]);
+  const [page, setPage] = useState(1);
+  const [pages, setPages] = useState(1);
 
   // methods
   const getTanks = async () => {
     try {
-      const res = await api.get("/user-tank");
+      const res = await api.get(`/user-tank?page=${page}`);
 
       const data = res.data.tank;
+      console.log(data);
 
       setTanks(data.data);
+      setPages(data.last_page);
     } catch (err) {
       console.error(err);
     }
@@ -30,38 +42,59 @@ function Tank() {
   // on component rendered
   useEffect(() => {
     getTanks();
-  }, []);
+  }, [page]);
 
   // render
   return (
     <div className="container">
-      <Box
-        sx={{
-          maxWidth: "1200px",
-          margin: "auto",
-          height: { xs: "288px", xl: "288px" },
-          borderRadius: "15px",
-          mt: "1em",
-        }}
-      >
-        <Box
-          sx={{
-            background,
-            height: "71px",
-            borderRadius: "15px 15px 0 0",
-            display: "flex",
-            justifyContent: "space-between",
-            px: "30px",
-            alignItems: "center",
-          }}
-        >
-          <Typography sx={{ fontSize: "19px" }}>Tank</Typography>
-          <Typography sx={{ fontSize: "19px" }}>Your ID: {user.id}</Typography>
+      {tanks.length ? (
+        <>
+          <Box
+            sx={{
+              maxWidth: "1200px",
+              margin: "auto",
+              height: { xs: "288px", xl: "288px" },
+              borderRadius: "15px",
+              mt: "1em",
+            }}
+          >
+            <Box
+              sx={{
+                background,
+                height: "71px",
+                borderRadius: "15px 15px 0 0",
+                display: "flex",
+                justifyContent: "space-between",
+                px: "30px",
+                alignItems: "center",
+              }}
+            >
+              <Typography sx={{ fontSize: "19px" }}>Tank</Typography>
+              <Typography sx={{ fontSize: "19px" }}>
+                Your ID: {user.id}
+              </Typography>
+            </Box>
+            {tanks.map((member, n) => (
+              <RenderMember key={n} {...member} getTanks={getTanks} />
+            ))}
+          </Box>
+
+          <ThemeProvider theme={darkTheme}>
+            <CssBaseline />
+            <Pagination
+              sx={{ margin: "auto", width: "max-content" }}
+              color="white"
+              count={pages}
+              page={page}
+              onChange={(e, n) => setPage(n)}
+            />
+          </ThemeProvider>
+        </>
+      ) : (
+        <Box component="h2" sx={{ textAlign: "center", p: 4 }}>
+          No Data
         </Box>
-        {tanks.map((member, n) => (
-          <RenderMember key={n} {...member} getTanks={getTanks} />
-        ))}
-      </Box>
+      )}
     </div>
   );
 }

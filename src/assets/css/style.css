@@ -10,9 +10,20 @@ body {
   overflow-x: hidden;
   font-family: "SF Pro Display";
 }
+/* 
+#app {
+  max-width: 100dvw;
+  overflow: hidden;
+} */
 
 a {
   text-decoration: none;
+}
+
+.container {
+  width: 90%;
+  /* max-width: 1433px; */
+  margin: auto;
 }
 
 .btn-gradient span {

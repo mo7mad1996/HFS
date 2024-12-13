@@ -2,18 +2,19 @@ import { Box, Typography } from "@mui/material";
 import vector3 from "@/assets/images/vector3.png";
 import vector4 from "@/assets/images/vector4.png";
 
+import css from "./style.module.css";
+
 function OurStory() {
   return (
     <Box
       sx={{ position: "relative", overflow: { xs: "hidden", md: "visible" } }}
     >
-      <Box className="container" sx={{ position: "relative", zIndex: "12" }}>
+      <Box className="container" sx={{ position: "relative", zIndex: 1, p: 6 }}>
         <Typography
+          className={css.my_title}
           sx={{
-            fontFamily: "Tanseek Modern Pro Arabic",
-            fontSize: "75px",
-            letterSpacing: "50px",
-            textAlign: "center",
+            fontSize: { xs: "50px ", md: "75px" },
+            letterSpacing: { xs: "20px", md: "50px" },
           }}
         >
           OUR STORY
@@ -21,35 +22,38 @@ function OurStory() {
 
         <Typography
           sx={{
-            width: { xs: "100%", md: "50%" },
+            width: { xs: "100%", md: "70%" },
             mx: "auto",
             mt: "30px",
             textAlign: "center",
             fontFamily: "SF Pro Display",
-            fontSize: "20px",
+            fontSize: { xs: "17px", md: "22px" },
             lineHeight: "23.87px",
           }}
         >
           At HFS, we believe that success is not just measured by numbers, but
           by the connections we build, the lives we touch, and the dreams we
           help turn into reality. Founded with a simple yet profound vision, HFS
-          stands for Home, Family, and Support—a reflection of the values that
+          stands for Home, Family, and Supporta reflection of the values that
           guide everything we do.
-          <Box sx={{ mt: "10px" }} />
+          <br />
+          {/* <Box sx={{ mt: "10px" }} /> */}
           Our journey began with a desire to create more than just a business.
           We wanted to build a community where people can thrive together,
           supporting each other in reaching their highest potential. We
           recognized that in today’s fast-paced world, people are searching for
-          something deeper—genuine connections, meaningful opportunities, and a
+          something deeper genuine connections, meaningful opportunities, and a
           sense of belonging. That’s what HFS is all about.
-          <Box sx={{ mt: "10px" }} />
+          {/* <Box sx={{ mt: "10px" }} /> */}
+          <br />
           We bring together the power of network marketing, trading expertise,
           programming solutions, and wellness products to offer holistic growth
           opportunities. Our products are designed to enhance your financial,
           mental, and physical well-being, while our supportive community lifts
-          you up every step of the way. We are more than just a company—we are a
+          you up every step of the way. We are more than just a company we are a
           family that stands by you.
-          <Box sx={{ mt: "10px" }} />
+          {/* <Box sx={{ mt: "10px" }} /> */}
+          <br />
           At HFS, we’re here to support your journey, no matter where it begins.
           Whether you’re looking to build a thriving business, improve your
           skills, or live a healthier life, we provide the tools and the network
@@ -67,7 +71,7 @@ function OurStory() {
           top: "10%",
           left: "50%",
           transform: "translateX(-50%)",
-          zIndex: "5",
+          zIndex: 0,
         }}
       >
         <Box
@@ -79,11 +83,11 @@ function OurStory() {
 
       <Box
         sx={{
-          width: "179px",
-          height: "179px",
+          width: { xs: "100px", md: "179px" },
           position: "absolute",
           right: "0",
           bottom: "0",
+          zIndex: 0,
         }}
       >
         <Box
