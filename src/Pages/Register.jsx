@@ -472,7 +472,7 @@ function Step3({ setFormData }) {
           }}
         >
           <Typography>Drag the Image here</Typography>
-          <label htmlFor="Input">Or Select an Image</label>
+          <label htmlhtmlFor="Input">Or Select an Image</label>
           <input
             id="Input"
             type="file"

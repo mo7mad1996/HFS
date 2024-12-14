@@ -8,7 +8,7 @@ import SocietyProducts from "@/Components/Home/SocietyProducts";
 import HfsSociety from "../Components/HfsSociety";
 import FloatingCallButton from "../Components/FloatingCallButton";
 import Subscriptions from "../Components/Subscriptions";
-import Footer from "@/Components/Home/Footer";
+import Footer from "@/Components/Home/Footer/Footer";
 
 function Home() {
   return (

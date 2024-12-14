@@ -26,7 +26,7 @@ const Network = () => {
   const [user, setUser] = useState({
     id: auth_user.id,
     user_name: auth_user.name,
-    rank: auth_user.email,
+    rank: auth_user.rank,
     user_image: auth_user.image,
   });
 

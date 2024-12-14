@@ -14,7 +14,7 @@ const rotate = keyframes`
 `;
 function OurFocus() {
   return (
-    <Box className={css.container}>
+    <Box className={css.container} id="focus">
       <Box className="container">
         <Typography
           className={css.my_title}

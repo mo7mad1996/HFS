@@ -8,7 +8,7 @@ import transactions from "@/assets/images/pages_assets/transactions.png";
 import sidebar_bg from "@/assets/images/pages_assets/sidebar_bg.png";
 
 //
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "@/Context";
@@ -30,6 +30,7 @@ function Sidebar() {
     { name: "Network", path: "/Network", icon: network },
     { name: "Transactions", path: "/Transactions", icon: transactions },
     { name: "TANK", path: "/tank", icon: transactions },
+    { name: "Profile", path: "/profile", icon: transactions },
   ]);
 
   useEffect(() => {
@@ -59,6 +60,11 @@ function Sidebar() {
     activeLinkRef.current = e.currentTarget;
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
     <Box
       ref={sidebarRef}
@@ -78,7 +84,8 @@ function Sidebar() {
         flexDirection: "column",
         gap: "50px",
         zIndex: "99999",
-        overflow: "hidden",
+        overflowX: "hidden",
+        overflowY: "auto",
       }}
     >
       <Box
@@ -149,6 +156,43 @@ function Sidebar() {
             </Box>
           </Box>
         ))}
+
+        <Box
+          component="a"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            height: "53px",
+            textAlign: "center",
+            fontSize: "15px",
+            fontWeight: "700",
+            color: "#c1b4dd",
+            mx: "auto",
+          }}
+          href="https://tradingsociety.net/"
+          target="_blank"
+        >
+          {" "}
+          Trading society
+        </Box>
+
+        <Button
+          sx={{
+            width: "154px",
+            height: "25px",
+            margin: "auto",
+            p: "1em",
+            background: "linear-gradient(90deg, #E14696 0%, #46DFFC 100%)",
+            color: "#fff",
+            fontSize: "15px",
+            fontWeight: "700",
+            mt: 2,
+          }}
+          onClick={handleLogout}
+        >
+          Logout
+        </Button>
       </Box>
     </Box>
   );

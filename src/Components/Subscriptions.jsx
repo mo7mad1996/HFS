@@ -7,7 +7,7 @@ import check_icon from "@/assets/images/layout/check_icon.png";
 import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
 import { Link } from "react-router-dom";
 
-function CardComponent({ title, price, cardItems }) {
+function CardComponent({ title, price, cardItems, n }) {
   return (
     <Box
       sx={{
@@ -83,8 +83,10 @@ function CardComponent({ title, price, cardItems }) {
         })}
       </Box>
 
-      <Box sx={{ textAlign: "center", ml: "30px" }}>
-        <Typography>Affiliate program with extra Bonus 25 CV</Typography>
+      <Box sx={{ textAlign: "center", mt: 4 }}>
+        <Typography>
+          {n != 0 ? "Affiliate program with extra Bonus" : <br />}
+        </Typography>
         <Box
           component={Link}
           to="/register"
@@ -203,7 +205,7 @@ function Subscriptions() {
   ]);
 
   return (
-    <Box>
+    <Box id="packages">
       <Box className="container" sx={{ width: "85%" }}>
         <Box
           sx={{
@@ -220,6 +222,7 @@ function Subscriptions() {
               title={card.title}
               price={card.price}
               cardItems={card.items}
+              n={index}
             />
           ))}
         </Box>

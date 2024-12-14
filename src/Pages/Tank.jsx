@@ -30,7 +30,6 @@ function Tank() {
       const res = await api.get(`/user-tank?page=${page}`);
 
       const data = res.data.tank;
-      console.log(data);
 
       setTanks(data.data);
       setPages(data.last_page);
@@ -53,7 +52,7 @@ function Tank() {
             sx={{
               maxWidth: "1200px",
               margin: "auto",
-              height: { xs: "288px", xl: "288px" },
+              // height: { xs: "288px", xl: "288px" },
               borderRadius: "15px",
               mt: "1em",
             }}
@@ -82,7 +81,7 @@ function Tank() {
           <ThemeProvider theme={darkTheme}>
             <CssBaseline />
             <Pagination
-              sx={{ margin: "auto", width: "max-content" }}
+              sx={{ margin: "30px auto", width: "max-content" }}
               color="white"
               count={pages}
               page={page}
@@ -91,7 +90,7 @@ function Tank() {
           </ThemeProvider>
         </>
       ) : (
-        <Box component="h2" sx={{ textAlign: "center", p: 4 }}>
+        <Box component="h2" sx={{ textAlign: "center", p: 4, my: 3 }}>
           No Data
         </Box>
       )}
@@ -113,10 +112,9 @@ function RenderMember({ member_name, member_id, getTanks }) {
         referral_id: member_id,
       });
 
-      console.log(res);
       getTanks();
     } catch (err) {
-      toast.error(err.response?.data?.messaage);
+      toast.error(err.response?.data?.message || err.message);
       console.error(err);
     } finally {
       setLoading(false);

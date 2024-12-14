@@ -22,19 +22,12 @@ import img11 from "@/assets/images/StarsBG.png";
 import Triangle from "@/assets/images/Trianle.png";
 import BlueRing from "@/assets/images/BlueRing.png";
 
-const Fade = keyframes`
-  0% { opacity: 0.01; }
-  25% { opacity: 0.1; }
-  50% { opacity: 0.1; }
-  75% { opacity: 0.1; }
-  100% { opacity: 0; }
-`;
-
 function PeaceOfArts() {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
   return (
     <Box
+      id="media"
       sx={{
         // Container for the peace of arts section
         backgroundImage: `url(${img11})`,
@@ -58,9 +51,10 @@ function PeaceOfArts() {
           top: "50%",
           left: "75%",
           width: "30%",
+          opacity: 0.4,
           // height: "60%",
           zIndex: "-1",
-          animation: `${Fade} 5s ease-in-out infinite`, // Adjust duration as needed
+          animation: `Fade 5s ease-in-out infinite`, // Adjust duration as needed
         }}
       />
       <img
@@ -71,9 +65,12 @@ function PeaceOfArts() {
           bottom: "70%",
           right: "80%",
           width: "30%",
+          opacity: 0.6,
+          filter: "blur(20px)",
+
           // height: "60%",
           zIndex: "-1",
-          animation: `${Fade} 5s ease-in-out infinite`, // Adjust duration as needed
+          animation: `Fade 5s ease-in-out infinite`, // Adjust duration as needed
         }}
       />
       <img
@@ -86,11 +83,13 @@ function PeaceOfArts() {
           width: "20%",
           // height: "40%",
           zIndex: "-1",
+          animation: `Fade 2s 5s ease-in-out infinite`, // Adjust duration as needed
         }}
       />
 
       {/* Title */}
       <Typography
+        id="media"
         className={css.my_title}
         sx={{
           fontSize: { xs: "50px ", md: "75px" },
@@ -98,7 +97,7 @@ function PeaceOfArts() {
           my: 5,
         }}
       >
-        PEACE OF ART
+        EVENTS
       </Typography>
       {/* pics slider */}
       <Box

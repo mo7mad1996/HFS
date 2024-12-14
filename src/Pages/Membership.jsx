@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Box, Button, Typography } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -13,18 +13,27 @@ import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
 import home_bg from "@/assets/images/pages_assets/home_bg.png";
 
 // component
-function CardComponent({ title, price, cardItems, cv, x, y, id }) {
+function CardComponent({
+  name,
+  price,
+  billing_period,
+  features,
+  cv,
+  x,
+  y,
+  id,
+}) {
   // config
   const api = useApi();
 
   let { baseUrl } = useContext(Context);
   async function subscribe(id) {
     try {
-      let res = await api.post(`${baseUrl}/subscribe`, { package_id: id });
+      let res = await api.post("/subscribe", { package_id: id });
 
       Swal.fire({
         title: "Good job!",
-        text: "You clicked the button!",
+        text: res.data.message,
         icon: "success",
       });
     } catch (error) {
@@ -79,12 +88,12 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
     >
       <Box sx={{ textAlign: "center", width: "100%" }}>
         <Typography sx={{ fontSize: { xs: "14px", xl: "20px" } }}>
-          {title}
+          {name}
         </Typography>
         <Typography sx={{ fontSize: "14px" }}>
           {price}{" "}
           <Typography component="span" sx={{ fontSize: "8px" }}>
-            / Monthly
+            / {billing_period}
           </Typography>
         </Typography>
 
@@ -100,11 +109,11 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
           flexDirection: "column",
         }}
       >
-        {cardItems.map((card, index) => {
-          const isLastItem = index === cardItems.length - 1;
+        {[...Object.keys(features)].map((card, index) => {
+          // const isLastItem = index === features.length - 1;
           return (
             <Box
-              key={index}
+              key={card}
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -113,7 +122,11 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
                 color: "#CACACA",
               }}
             >
-              <Box sx={{ width: ".6em" }} component="img" src={card.icon} />
+              <Box
+                sx={{ width: ".6em" }}
+                component="img"
+                src={features[card] ? check_icon : x_mark_icon}
+              />
               <Typography
                 sx={{
                   width: "100%",
@@ -121,10 +134,10 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
                   position: "relative",
                   color: "white",
                   py: 1.1,
-                  borderBottom: isLastItem ? "" : "1px solid #cacaca",
+                  // borderBottom: isLastItem ? "" : "1px solid #cacaca",
                 }}
               >
-                {card.title}
+                {card}
               </Typography>
             </Box>
           );
@@ -171,126 +184,8 @@ function CardComponent({ title, price, cardItems, cv, x, y, id }) {
 }
 
 function Membership() {
-  const [cardLists] = useState([
-    {
-      id: "1",
-      title: "Essential",
-      price: "99",
-      cv: "25",
-      items: [
-        { icon: check_icon, title: "Trade alert" },
-        { icon: check_icon, title: "Beginner course" },
-        { icon: check_icon, title: "Basics course" },
-        { icon: check_icon, title: "Live trading" },
-        { icon: x_mark_icon, title: "Live sessions" },
-        { icon: x_mark_icon, title: "Advance course" },
-        { icon: x_mark_icon, title: "Expert course" },
-        { icon: x_mark_icon, title: "Expert plus course" },
-        { icon: x_mark_icon, title: "Scanners" },
-        { icon: x_mark_icon, title: "private sessions with selected coach" },
-        { icon: x_mark_icon, title: "Affiliate program" },
-        { icon: x_mark_icon, title: "Affiliate program with extra Bonus" },
-      ],
-
-      x: -200,
-      y: 0,
-    },
-    {
-      id: 2,
-      title: "Basic",
-      price: "399",
-      cv: "100",
-      items: [
-        { icon: check_icon, title: "Trade alert" },
-        { icon: check_icon, title: "Beginner course" },
-        { icon: check_icon, title: "Basics course" },
-        { icon: x_mark_icon, title: "Live trading" },
-        { icon: check_icon, title: "Live sessions" },
-        { icon: x_mark_icon, title: "Advance course" },
-        { icon: x_mark_icon, title: "Expert course" },
-        { icon: x_mark_icon, title: "Expert plus course" },
-        { icon: x_mark_icon, title: "Scanners" },
-        { icon: x_mark_icon, title: "private sessions with selected coach" },
-        { icon: x_mark_icon, title: "Affiliate program" },
-        { icon: x_mark_icon, title: "Affiliate program with extra Bonus" },
-      ],
-
-      x: 0,
-      y: -200,
-    },
-
-    {
-      id: 3,
-      title: "Premium",
-      price: "749",
-      cv: "200",
-      items: [
-        { icon: check_icon, title: "Trade alert" },
-        { icon: check_icon, title: "Beginner course" },
-        { icon: check_icon, title: "Basics course" },
-        { icon: check_icon, title: "Live trading" },
-        { icon: check_icon, title: "Live sessions" },
-        { icon: check_icon, title: "Advance course" },
-        { icon: x_mark_icon, title: "Expert course" },
-        { icon: x_mark_icon, title: "Expert plus course" },
-        { icon: check_icon, title: "One Scanners" },
-        { icon: x_mark_icon, title: "private sessions with selected coach" },
-        { icon: x_mark_icon, title: "Affiliate program" },
-        { icon: x_mark_icon, title: "Affiliate program with extra Bonus" },
-      ],
-
-      x: 200,
-      y: 0,
-    },
-
-    {
-      id: 4,
-      title: "Pro",
-      price: "1499",
-      cv: "500",
-      items: [
-        { icon: check_icon, title: "Trade alert" },
-        { icon: check_icon, title: "Beginner course" },
-        { icon: check_icon, title: "Basics course" },
-        { icon: check_icon, title: "Live trading" },
-        { icon: check_icon, title: "Live sessions" },
-        { icon: check_icon, title: "Advance course" },
-        { icon: check_icon, title: "Expert course" },
-        { icon: x_mark_icon, title: "Expert plus course" },
-        { icon: check_icon, title: "All scanners" },
-        { icon: check_icon, title: "4 private sessions with selected coach" },
-        { icon: check_icon, title: "Affiliate program" },
-        { icon: check_icon, title: "Affiliate program with extra Bonus" },
-      ],
-
-      x: -200,
-      y: 0,
-    },
-
-    {
-      id: 5,
-      title: "Premium",
-      price: "749",
-      cv: "600",
-      items: [
-        { icon: check_icon, title: "Trade alert" },
-        { icon: check_icon, title: "Beginner course" },
-        { icon: check_icon, title: "Basics course" },
-        { icon: check_icon, title: "Live trading" },
-        { icon: check_icon, title: "Live sessions" },
-        { icon: check_icon, title: "Advance course" },
-        { icon: check_icon, title: "Expert course" },
-        { icon: check_icon, title: "Expert plus course" },
-        { icon: check_icon, title: "All scanners" },
-        { icon: check_icon, title: "4 private sessions with selected coach" },
-        { icon: check_icon, title: "Affiliate program" },
-        { icon: check_icon, title: "Affiliate program with extra Bonus" },
-      ],
-
-      x: 200,
-      y: 0,
-    },
-  ]);
+  const api = useApi();
+  const [cardsList, setCardsList] = useState([]);
 
   let containerVariant = {
     hidden: {
@@ -304,6 +199,22 @@ function Membership() {
       staggerChildren: 0.2,
     },
   };
+
+  const getPackages = async () => {
+    try {
+      const res = await api.get("/packages");
+
+      const data = res.data;
+
+      setCardsList(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getPackages();
+  });
 
   return (
     <Box
@@ -326,17 +237,8 @@ function Membership() {
             gap: "20px",
           }}
         >
-          {cardLists.map((card, index) => (
-            <CardComponent
-              key={index}
-              title={card.title}
-              price={card.price}
-              cardItems={card.items}
-              cv={card.cv}
-              x={card.x}
-              y={card.y}
-              id={card.id}
-            />
+          {cardsList.map((card, index) => (
+            <CardComponent {...card} key={index} />
           ))}
         </Box>
       </Box>

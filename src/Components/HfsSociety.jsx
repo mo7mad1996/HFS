@@ -10,6 +10,7 @@ import "swiper/css";
 function HfsSociety() {
   return (
     <Box
+      id="Webinars"
       className="container"
       sx={{
         width: "100vw",
@@ -47,13 +48,8 @@ function HfsSociety() {
       </Box>
 
       <Box sx={{ pt: "150px" }}>
-        <Swiper
-          spaceBetween={50}
-          slidesPerView="auto"
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
-          {[1, 2, 3].map((_, index) => {
+        <Swiper spaceBetween={50} slidesPerView="auto">
+          {[1, 2, 3, 4, 5].map((_, index) => {
             return (
               <SwiperSlide key={index} style={{ width: "min(100%, 420px)" }}>
                 <Box

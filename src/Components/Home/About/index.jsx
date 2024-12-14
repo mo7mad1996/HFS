@@ -61,6 +61,7 @@ function About() {
 
   return (
     <Box
+      id="home"
       className={`container ${css.hero}`}
       sx={{
         pb: { xs: "30px", md: "0" },

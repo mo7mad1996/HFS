@@ -1,4 +1,5 @@
 import css from "./style.module.css";
+
 import {
   Box,
   Button,
@@ -20,17 +21,31 @@ function Navbar() {
   const token = localStorage.getItem("token");
 
   const links = [
-    { name: "What’s is HFS Soicety", path: "/" },
-    { name: "Home", path: "/dashboard" },
-    { name: "Achievements", path: "/academy" },
-    { name: "partners", path: "/sessions" },
-    { name: "Media", path: "/trade-alerts" },
-    { name: "Webinars", path: "/scanners" },
+    { name: "Home", path: "#home" },
+    { name: "What’s HFS Society", path: "#focus" },
+    // { name: "Achievements", path: "/academy" },
+    // { name: "partners", path: "/sessions" },
+    { name: "Events", path: "#media" },
+    { name: "Society Art", path: "#art" },
+    { name: "Webinars", path: "#Webinars" },
+    { name: "Packages", path: "#packages" },
   ];
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
+  };
+
+  const goTo = (id, e) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(id);
+    console.log(targetElement);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   };
 
   return (
@@ -46,9 +61,14 @@ function Navbar() {
           {/* Logo */}
           <Box component="img" src={logo} className={css.logo} />
           {links.map((link) => (
-            <Link to={link.path} key={link.name} className={css.nav_link}>
+            <a
+              href={link.path}
+              onClick={(e) => goTo(link.path, e)}
+              key={link.name}
+              className={css.nav_link}
+            >
               {link.name}
-            </Link>
+            </a>
           ))}
 
           {/* Buttons */}
@@ -124,8 +144,9 @@ function Navbar() {
                 key={link.name}
                 onClick={() => setIsDrawerOpen(false)}
               >
-                <Link
-                  to={link.path}
+                <a
+                  onClick={(e) => goTo(link.path, e)}
+                  href={link.path}
                   style={{
                     color: "#fff",
                     textDecoration: "none",
@@ -134,7 +155,7 @@ function Navbar() {
                   }}
                 >
                   <ListItemText primary={link.name} />
-                </Link>
+                </a>
               </ListItem>
             ))}
           </List>

@@ -74,3 +74,14 @@ a {
   z-index: 2;
   transform: translate(-30%, -30%);
 }
+
+@keyframes Fade {
+  100%,
+  0% {
+    opacity: 0.4;
+  }
+  75%,
+  25% {
+    opacity: 0.1;
+  }
+}

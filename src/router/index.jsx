@@ -15,6 +15,7 @@ import AllTransactions from "@/Pages/AllTransaction";
 import Test from "@/Pages/Test";
 import Tank from "@/Pages/Tank";
 import Referral from "@/Pages/Referral";
+import Profile from "@/Pages/Profile";
 
 // routes
 const router = createBrowserRouter([
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "/Transactions", element: <AllTransactions /> },
       { path: "/wallet", element: <CustomCard /> },
       { path: "/tank", element: <Tank /> },
+      { path: "/profile", element: <Profile /> },
     ],
   },
   { path: "/register", element: <Register /> },

@@ -77,7 +77,7 @@ function OurStory() {
         <Box
           component="img"
           src={vector3}
-          sx={{ width: "100%", height: "100%" }}
+          sx={{ width: "100%", height: "100%", opacity: 0.4 }}
         />
       </Box>
 

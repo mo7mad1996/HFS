@@ -71,7 +71,7 @@ function Dashboard() {
     } catch (err) {
       toast.error(err.response?.data?.message);
 
-      console.log(err);
+      console.error(err);
     }
   };
   const getCounts = async () => {
@@ -83,7 +83,7 @@ function Dashboard() {
       setCount(data);
     } catch (err) {
       toast.error(err.response?.data?.message);
-      console.log(err);
+      console.error(err);
     }
   };
 

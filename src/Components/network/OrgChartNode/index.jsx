@@ -33,7 +33,7 @@ const OrgChartNode = ({ id, user_name, rank, user_image, r, l }) => {
       setRight(data.right_leg_member);
       setLeft(data.left_leg_member);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -57,7 +57,7 @@ const OrgChartNode = ({ id, user_name, rank, user_image, r, l }) => {
       <Box
         sx={{
           width: "225px",
-          height: "152px",
+          // height: "152px",
           borderRadius: "15px",
           position: "relative",
         }}
@@ -67,15 +67,31 @@ const OrgChartNode = ({ id, user_name, rank, user_image, r, l }) => {
             background:
               "linear-gradient(124.86deg, #63CCEC 7.03%, #E44896 92.97%)",
             // width: "100%",
-            height: "40%",
             borderRadius: "15px 15px 0 0",
           }}
-        ></Box>
+        >
+          <Avatar
+            src={user_image}
+            alt={`${user_name}'s picture`}
+            sx={{
+              width: "80px",
+              height: "80px",
+              backgroundColor: "#fff",
+              position: "relative",
+              // top: "30%",
+              // left: "50%",
+              margin: "auto",
+              transform: "translate(0%,30%)",
+              overflow: "hidden",
+            }}
+          />
+        </Box>
 
         <Box
           sx={{
             backgroundColor: "#02070B",
-            height: "60%",
+            // height: "60%",
+            padding: "20% 0",
             borderRadius: "0 0 15px 15px",
             textAlign: "center",
             display: "flex",
@@ -89,24 +105,13 @@ const OrgChartNode = ({ id, user_name, rank, user_image, r, l }) => {
             {user_name}
           </Typography>
           <Typography sx={{ fontSize: "10px", color: "#fff" }}>
+            id: {id}
+          </Typography>
+          <Typography sx={{ fontSize: "10px", color: "#fff" }}>
             {rank}
           </Typography>
         </Box>
 
-        <Avatar
-          src={user_image}
-          alt={`${user_name}'s picture`}
-          sx={{
-            width: "80px",
-            height: "80px",
-            backgroundColor: "#fff",
-            position: "absolute",
-            top: "30%",
-            left: "50%",
-            transform: "translate(-50%,-50%)",
-            overflow: "hidden",
-          }}
-        />
         {/* 
         <Box
          
