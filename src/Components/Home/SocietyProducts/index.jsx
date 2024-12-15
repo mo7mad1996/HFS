@@ -35,8 +35,8 @@ function SocietyProducts() {
           <br />
           ART
         </Typography>
-        {[card1, card2].map((e) => (
-          <Box className={css.card}>
+        {[card1, card2].map((e, n) => (
+          <Box className={css.card} key={n}>
             <div className={css.container}>
               <img src={e} alt="..." className={css.img} />
 

@@ -173,7 +173,7 @@ function About() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: 0.5 }}
                   onViewportEnter={() => handleAnimation(index, 0, item.value)}
-                  key={item.label}
+                  key={index}
                   sx={{
                     minWidth: "100px",
                     fontSize: { xs: "14px", sm: "20px", md: "25px" },

@@ -289,9 +289,9 @@ function Dashboard() {
                     mask: "linear-gradient(90deg, black 70%, transparent)",
                   }}
                 >
-                  <div className="oneLine" style={{ width: "210px" }}>
+                  <span className="oneLine" style={{ width: "210px" }}>
                     {referral}
-                  </div>
+                  </span>
                 </Typography>
               </Box>
               <Box

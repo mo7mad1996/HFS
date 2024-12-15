@@ -18,6 +18,7 @@ import css from "./style.module.css";
 // api
 import useApi from "@/api";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export default function Transformation({ getWallet }) {
   // setup
@@ -28,10 +29,24 @@ export default function Transformation({ getWallet }) {
   const [loading, setLoading] = useState(false);
 
   // methods
-  const submit = (payload) => {
-    console.log(payload);
-    getWallet();
-    handleClose();
+  const submit = async (payload) => {
+    try {
+      setLoading(true);
+
+      const res = await api.get("/internal-transfer");
+
+      const data = res;
+
+      console.log(data);
+      toast.success();
+      getWallet();
+      handleClose();
+    } catch (err) {
+      toast.error(err.response?.data?.message || err.message);
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
   const handleClose = () => setOpen(false);
 
@@ -41,15 +56,15 @@ export default function Transformation({ getWallet }) {
 
       <div className={css.coolinput}>
         <label htmlFor="input123" className={css.text}>
-          ID:
+          Receiver Member ID:
         </label>
         <input
           type="text"
           id="input123"
-          placeholder="ID here..."
+          placeholder="Receiver Member ID"
           name="input"
           className={css.input}
-          {...register("id")}
+          {...register("receiverMemberId")}
         />
       </div>
       <div className={css.coolinput}>
@@ -66,7 +81,7 @@ export default function Transformation({ getWallet }) {
         />
       </div>
       <Button type="button" onClick={() => setOpen(true)}>
-        Charge
+        Send
       </Button>
 
       <Modal

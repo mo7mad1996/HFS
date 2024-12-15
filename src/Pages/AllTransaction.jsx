@@ -14,37 +14,26 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { Context } from "@/Context";
+import useApi from "@/api";
 
 function AllTransactions() {
+  const api = useApi();
   const [transactions, setTransactions] = useState([]);
   const [setFilterType] = useState("all");
   let { baseUrl } = useContext(Context);
   //   All Transactions
   async function getAllTransactions() {
     try {
-      let res = await axios.get(
-        `${baseUrl}/all-tarnsactions`, // تأكد من تصحيح الاسم
-        {
-          headers: {
-            Authorization: `Bearer 5|YPN5XVpoTXraDLaEjcIAMX6i08OrlrnagNvsXr1X080d0e24`,
-          },
-        }
-      );
-      setTransactions(res?.data.tarnsactions?.data); // تأكد من صحة هذا السطر حسب هيكل البيانات
+      let res = await api.get("/all-tarnsactions");
+      setTransactions(res?.data.tarnsactions?.data);
     } catch (error) {
       console.error("Error fetching transactions:", error);
     }
   }
 
-  //   Withdrawals
-
   async function getWithdrawals() {
     try {
-      let res = await axios.get(`${baseUrl}/all-withdrawal-tarnsactions`, {
-        headers: {
-          Authorization: `Bearer 5|YPN5XVpoTXraDLaEjcIAMX6i08OrlrnagNvsXr1X080d0e24`,
-        },
-      });
+      let res = await api.get("/all-withdrawal-tarnsactions");
       setTransactions(res?.data?.transactions?.data);
     } catch (error) {
       console.error("Error fetching withdrawals:", error);
@@ -54,11 +43,7 @@ function AllTransactions() {
   // Deposits
   async function getDeposits() {
     try {
-      let res = await axios.get(`${baseUrl}/all-deposit-tarnsactions`, {
-        headers: {
-          Authorization: `Bearer 5|YPN5XVpoTXraDLaEjcIAMX6i08OrlrnagNvsXr1X080d0e24`,
-        },
-      });
+      let res = await api.get("/all-deposit-tarnsactions");
       setTransactions(res.data.transactions.data);
     } catch (error) {
       console.error("Error fetching deposits:", error);
@@ -68,11 +53,7 @@ function AllTransactions() {
   // All Accepted Transactions
   async function allAcceptedTarnsactions() {
     try {
-      let res = await axios.get(`${baseUrl}/all-accetptd-tarnsactions`, {
-        headers: {
-          Authorization: `Bearer 5|YPN5XVpoTXraDLaEjcIAMX6i08OrlrnagNvsXr1X080d0e24`,
-        },
-      });
+      let res = await axios.get("/all-accetptd-tarnsactions");
       setTransactions(res.data.transactions.data);
     } catch (error) {
       console.error("Error fetching accepted transactions:", error);
@@ -82,11 +63,7 @@ function AllTransactions() {
   // All Rejected Transaction
   async function allRejectedTarnsactions() {
     try {
-      let res = await axios.get(`${baseUrl}/all-rejected-tarnsactions`, {
-        headers: {
-          Authorization: `Bearer 5|YPN5XVpoTXraDLaEjcIAMX6i08OrlrnagNvsXr1X080d0e24`,
-        },
-      });
+      let res = await axios.get("/all-rejected-tarnsactions");
       setTransactions(res.data.transactions.data);
     } catch (error) {
       console.error("Error fetching accepted transactions:", error);
@@ -96,11 +73,7 @@ function AllTransactions() {
   // All Pending Transactions
   async function allPendingTransactions() {
     try {
-      let res = await axios.get(`${baseUrl}/all-pending-tarnsactions`, {
-        headers: {
-          Authorization: `Bearer 5|YPN5XVpoTXraDLaEjcIAMX6i08OrlrnagNvsXr1X080d0e24`,
-        },
-      });
+      let res = await axios.get("/all-pending-tarnsactions");
       setTransactions(res.data.transactions.data);
     } catch (error) {
       console.error("Error fetching accepted transactions:", error);
