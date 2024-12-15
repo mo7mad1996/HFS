@@ -28,10 +28,6 @@ function NavbarPages() {
       </Box>
 
       <Box sx={{ display: "flex", alignItems: "center", gap: "20px" }}>
-        <Box sx={{ width: "37px", height: "37px" }}>
-          {user.image ? <Avatar alt={user.name} src={user.image} /> : <User />}
-        </Box>
-
         <Typography
           sx={{ fontSize: "15px", fontWeight: "700", textAlign: "right" }}
         >
@@ -39,6 +35,10 @@ function NavbarPages() {
           <br />
           {user.email}
         </Typography>
+
+        <Box sx={{ width: "37px", height: "37px" }}>
+          {user.image ? <Avatar alt={user.name} src={user.image} /> : <User />}
+        </Box>
       </Box>
     </Box>
   );

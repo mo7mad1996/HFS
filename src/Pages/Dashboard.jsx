@@ -318,6 +318,30 @@ function Dashboard() {
         </Box>
 
         <Box
+          sx={{
+            borderRadius: "5px",
+            backgroundColor: "rgb(13, 46, 71)",
+            display: "flex",
+            justifyContent: "start",
+            alignItems: "center",
+            p: "1em",
+            my: "1em",
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "15px",
+              lineHeight: "2",
+              // letterSpacing: "8px",
+            }}
+          >
+            Sponsor
+            <br />
+            Hello world
+          </Typography>
+        </Box>
+
+        <Box
           component={motion.div}
           initial={{ x: 0, y: 0, rotate: 0, scale: 1 }}
           whileHover={{
@@ -332,7 +356,8 @@ function Dashboard() {
             width: "355px",
             height: "163px",
             backgroundColor: "#061622",
-            mt: "170px",
+            mt: "130px",
+            mb: "30px",
             borderRadius: "15px",
             p: "15px",
             position: "relative",
@@ -356,7 +381,6 @@ function Dashboard() {
             <br />
             Rank
           </Typography>
-
           <Box
             sx={{
               display: "flex",

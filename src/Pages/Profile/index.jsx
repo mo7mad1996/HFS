@@ -177,6 +177,11 @@ export default function Profile() {
                   </CardActions>
                 </form>
               </CardContent>
+
+              <hr />
+              <CardContent>
+                <EditEmail user={user} />
+              </CardContent>
             </Card>
           </Box>
         </Modal>
@@ -263,5 +268,66 @@ function DeleteModal({ open, handleClose }) {
         </Card>
       </Box>
     </Modal>
+  );
+}
+
+function EditEmail({ user }) {
+  const api = useApi();
+  const { register, handleSubmit } = useForm();
+
+  const [loading, setLoading] = useState(false);
+
+  // methods
+  const submit = async (payload) => {
+    try {
+      setLoading(true);
+      const res = await api.post("/user/password/email", payload);
+
+      const data = res.data.status;
+
+      toast.success(data);
+    } catch (error) {
+      console.error(error);
+
+      const errors = error.response?.data?.message;
+
+      if ("string" == typeof errors) return toast.error(errors);
+      if (errors)
+        Object.values(errors)
+          .flat()
+          .forEach((err) => toast.error(err));
+      else toast.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  return (
+    <form onSubmit={handleSubmit(submit)} className={css.form}>
+      <h3> Edit your email</h3>
+      <div className={css.coolinput}>
+        <label htmlFor="input1" className={css.text}>
+          old Email :
+        </label>
+        <input
+          id="input1"
+          defaultValue={user.email}
+          className={css.input}
+          {...register("email")}
+        />
+      </div>
+
+      <CardActions>
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          loading={loading.toString()}
+          disabled={loading}
+          type="submit"
+        >
+          Send the request to edit it
+        </Button>
+      </CardActions>
+    </form>
   );
 }

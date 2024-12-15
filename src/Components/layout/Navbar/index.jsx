@@ -39,7 +39,6 @@ function Navbar() {
   const goTo = (id, e) => {
     e.preventDefault();
     const targetElement = document.querySelector(id);
-    console.log(targetElement);
     if (targetElement) {
       targetElement.scrollIntoView({
         behavior: "smooth",

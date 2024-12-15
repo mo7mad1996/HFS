@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import Balance from "./Balance";
 import Charging from "./Charging";
 import WithDraw from "./WithDraw";
+import Transformation from "./Transformation";
 
 // css
 import css from "./style.module.css";
@@ -45,6 +46,7 @@ export default function CustomCard() {
       <Balance getWallet={getWallet} wallet={wallet} />
       <Charging getWallet={getWallet} />
       <WithDraw />
+      <Transformation getWallet={getWallet} />
     </Box>
   );
 }

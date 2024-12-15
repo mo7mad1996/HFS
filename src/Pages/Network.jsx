@@ -10,10 +10,12 @@ import {
   Box,
   IconButton,
   Button,
+  TextField,
 } from "@mui/material";
 import toast from "react-hot-toast";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Context } from "@/Context";
+import { useForm } from "react-hook-form";
 
 import OrgChartNode from "@/components/network/OrgChartNode/index.jsx";
 
@@ -21,6 +23,7 @@ const Network = () => {
   // config
   const api = useApi();
   const { user: auth_user } = useContext(Context);
+  const { register, handleSubmit } = useForm();
 
   // data
   const [user, setUser] = useState({
@@ -31,6 +34,16 @@ const Network = () => {
   });
 
   // methods
+  const submit = async (payload) => {
+    try {
+      // const res = await api.get(`/get-direct-downline-members/${payload.id}`);
+      // const data = res.data.members;
+      // setUser(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   // const getNetWorkData = async () => {
   //   try {
   //     const res = await api.get("/direct-downline-members");
@@ -76,7 +89,7 @@ const Network = () => {
               height: "100%",
             }}
           >
-            <Box sx={{ position: "absolute", top: 10, left: 10 }}>
+            <Box sx={{ position: "absolute", top: 10, left: 10, zIndex: 2 }}>
               <Button
                 variant="contained"
                 color="primary"
@@ -100,6 +113,25 @@ const Network = () => {
               >
                 Reset
               </Button>
+
+              <form onSubmit={handleSubmit(submit)}>
+                <TextField
+                  variant="filled"
+                  label="id"
+                  size="small"
+                  sx={{
+                    "&.MuiTextField-root": {
+                      background: "#d4d3d3 !important",
+                      borderRadius: 3,
+                      mx: 1,
+                    },
+                  }}
+                  {...register("id")}
+                />
+                <Button variant="outlined" sx={{ margin: 1 }} type="submit">
+                  Get
+                </Button>
+              </form>
             </Box>
 
             <TransformComponent contentStyle={{}}>

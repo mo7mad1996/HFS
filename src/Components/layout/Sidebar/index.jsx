@@ -17,7 +17,10 @@ import { motion } from "framer-motion";
 // css
 import css from "./style.module.css";
 
+import useApi from "@/api";
+
 function Sidebar() {
+  const api = useApi();
   const { sidebarOpen, setSidebarOpen } = useContext(Context);
   const sidebarRef = useRef(null);
   const activeLinkRef = useRef(null);
@@ -63,6 +66,12 @@ function Sidebar() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
+  };
+
+  const goToTS = async () => {
+    api.get("/sync-user").then((res) => {
+      console.log(res);
+    });
   };
 
   return (
@@ -158,7 +167,6 @@ function Sidebar() {
         ))}
 
         <Box
-          component="a"
           sx={{
             display: "flex",
             alignItems: "center",
@@ -170,10 +178,11 @@ function Sidebar() {
             color: "#c1b4dd",
             mx: "auto",
           }}
-          href="https://tradingsociety.net/"
+          // href="https://tradingsociety.net/"
+          // href="https://api.hfssociety.com/api/v1/sync-user"
           target="_blank"
+          onClick={goToTS}
         >
-          {" "}
           Trading society
         </Box>
 

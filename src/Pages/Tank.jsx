@@ -32,6 +32,7 @@ function Tank() {
       const data = res.data.tank;
 
       setTanks(data.data);
+
       setPages(data.last_page);
     } catch (err) {
       console.error(err);
@@ -100,7 +101,7 @@ function Tank() {
 
 export default Tank;
 
-function RenderMember({ member_name, member_id, getTanks }) {
+function RenderMember({ member_name, member_id, getTanks, member_package }) {
   const api = useApi();
   const [loading, setLoading] = useState(false);
 
@@ -120,6 +121,8 @@ function RenderMember({ member_name, member_id, getTanks }) {
       setLoading(false);
     }
   };
+
+  const deleteUser = () => {};
 
   return (
     <Box
@@ -144,6 +147,16 @@ function RenderMember({ member_name, member_id, getTanks }) {
             gap: "1em",
           }}
         >
+          {member_package && (
+            <Button
+              variant="outlined"
+              color="error"
+              disabled={loading}
+              onClick={() => deleteUser()}
+            >
+              Delete
+            </Button>
+          )}
           <Button
             variant="outlined"
             color="secondary"
