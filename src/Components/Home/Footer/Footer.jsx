@@ -101,7 +101,13 @@ function Footer() {
               <Box
                 component="img"
                 src={logo}
-                sx={{ mb: { xs: 2, md: 0 }, height: "50px" }}
+                sx={{
+                  mb: { xs: 2, md: 0 },
+                  height: "50px",
+                  // MaxWidth: "50vw",
+                  display: "block",
+                  objectFit: "contain",
+                }}
               />
               <Box
                 sx={{
