@@ -132,7 +132,10 @@ function Navbar() {
             alignItems: "center",
             paddingTop: "20px",
             backgroundColor: "#000",
-            // height: "100%",
+            overflow: "auto",
+            height: "100%",
+
+            minHeight: "100dvh",
             p: 1,
             color: "#fff",
           }}
