@@ -69,13 +69,13 @@ function Navbar() {
               {link.name}
             </a>
           ))}
+          <Link className={css.nav_link} to={"/login"}>
+            Login
+          </Link>
 
           {/* Buttons */}
           {!token ? (
             <>
-              <Link className={css.nav_link} to={"/login"}>
-                Login
-              </Link>
               <Button
                 className={css.join_us}
                 onClick={() => navigate("/register")}
@@ -132,7 +132,8 @@ function Navbar() {
             alignItems: "center",
             paddingTop: "20px",
             backgroundColor: "#000",
-            height: "100%",
+            // height: "100%",
+            p: 1,
             color: "#fff",
           }}
         >
@@ -159,6 +160,17 @@ function Navbar() {
             ))}
           </List>
 
+          <Link
+            to="/login"
+            style={{
+              color: "#fff",
+              textDecoration: "none",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            <ListItemText primary="Login" />
+          </Link>
           {!token ? (
             <Button
               sx={{
