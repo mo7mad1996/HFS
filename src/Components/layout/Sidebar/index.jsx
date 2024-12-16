@@ -70,7 +70,9 @@ function Sidebar() {
 
   const goToTS = async () => {
     api.get("/sync-user").then((res) => {
-      console.log(res);
+      const token = res.data.token;
+
+      window.location.href = `https://tradingsociety.net/redirect?token=${token}`;
     });
   };
 
@@ -177,6 +179,7 @@ function Sidebar() {
             fontWeight: "700",
             color: "#c1b4dd",
             mx: "auto",
+            cursor: "pointer",
           }}
           // href="https://tradingsociety.net/"
           // href="https://api.hfssociety.com/api/v1/sync-user"

@@ -36,11 +36,22 @@ const Network = () => {
   // methods
   const submit = async (payload) => {
     try {
-      // const res = await api.get(`/get-direct-downline-members/${payload.id}`);
-      // const data = res.data.members;
-      // setUser(data);
+      const res = await api.get(`/user/data/${payload.id}`);
+      const data = res.data["user data"];
+      const u = {
+        id: data.id,
+        user_name: data.name,
+        rank: data.member?.rank?.name,
+        user_image: data.image,
+      };
+
+      setUser(u);
     } catch (err) {
       console.error(err);
+
+      const data = err.response?.data?.message || err.message;
+      // toast.error(data);
+      toast.error("No User with this id");
     }
   };
 

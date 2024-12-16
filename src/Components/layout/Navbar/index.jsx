@@ -185,7 +185,10 @@ function Navbar() {
                 fontWeight: "700",
                 mt: 2,
               }}
-              onClick={() => setIsDrawerOpen(false)}
+              onClick={() => {
+                navigate("/register");
+                setIsDrawerOpen(false);
+              }}
             >
               Join us
             </Button>
