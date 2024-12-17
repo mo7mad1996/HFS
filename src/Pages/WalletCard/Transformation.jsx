@@ -33,12 +33,10 @@ export default function Transformation({ getWallet }) {
     try {
       setLoading(true);
 
-      const res = await api.get("/internal-transfer");
+      const res = await api.post("/internal-transfer", payload);
 
-      const data = res;
-
-      console.log(data);
-      toast.success();
+      const data = res.data.message;
+      toast.success(data);
       getWallet();
       handleClose();
     } catch (err) {
