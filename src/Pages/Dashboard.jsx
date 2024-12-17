@@ -21,7 +21,7 @@ import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
 function Dashboard() {
   // config
   const api = useApi();
-  let { sidebarOpen, user } = useContext(Context);
+  let { sidebarOpen, user, setUser } = useContext(Context);
   const navigate = useNavigate();
 
   // data
@@ -35,21 +35,20 @@ function Dashboard() {
   });
   const referral = `${window.location.origin}/referral?u=${user.id}`;
 
-  const rows = useMemo(
-    () => [
-      { name: "ROYAL CROWN DIAMOND", right: "0" },
-      { name: "CROWN DIAMOND", right: "0" },
-      { name: "BLACK DIAMOND", right: "0" },
-      { name: "BLUE DIAMOND", right: "0" },
-      { name: "DIAMOND", right: "0" },
-      { name: "EMERALD", right: "0" },
-      { name: "RUBY", right: "0" },
-      { name: "SAPPHIRE", right: "0" },
-      { name: "JADE", right: "3" },
-      { name: "EXACTIVE", right: "0" },
-    ],
-    []
-  );
+  const [rows, setRows] = useState([
+    { right: "0", left: "0", rank: "ROYAL CROWN DIAMOND" },
+    { right: "0", left: "0", rank: "CROWN DIAMOND" },
+    { right: "0", left: "0", rank: "BLACK DIAMOND" },
+    { right: "0", left: "0", rank: "BLUE DIAMOND" },
+    { right: "0", left: "0", rank: "DIAMOND" },
+    { right: "0", left: "0", rank: "EMERALD" },
+    { right: "0", left: "0", rank: "RUBY" },
+    { right: "0", left: "0", rank: "SAPPHIRE" },
+    { right: "0", left: "0", rank: "JADE" },
+    { right: "0", left: "0", rank: "EXACTIVE" },
+  ]);
+  const [evaluate, setEvaluate] = useState(null);
+  const [err, setError] = useState(null);
 
   let containerVariants = {
     initial: {
@@ -86,6 +85,36 @@ function Dashboard() {
       console.error(err);
     }
   };
+  const getMemberDownLine = async () => {
+    try {
+      const res = await api.get("/members/downlines");
+      const data = res.data.downline_details;
+      setRows(data);
+    } catch (err) {
+      consol.error(err);
+    }
+  };
+  const getUser = async () => {
+    try {
+      const { data } = await api.get("/user/data");
+
+      setUser(data["user data"]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const getRankEvaluate = async () => {
+    try {
+      const res = await api.get("/rank/evaluate");
+
+      const data = res.data;
+      console.log(data);
+      setEvaluate(data);
+    } catch (err) {
+      setError(err.response?.data?.message);
+    }
+  };
 
   const copyReferral = async () => {
     try {
@@ -100,23 +129,26 @@ function Dashboard() {
   useEffect(() => {
     getVolumes();
     getCounts();
+    getMemberDownLine();
+    getRankEvaluate();
+    getUser();
   }, []);
 
   return (
     <Box
       component={motion.div}
-      className="container"
+      // className="container"
       variants={containerVariants}
       initial="initial"
       animate="visible"
       transition={{ duration: 3 }}
       sx={{
         display: "flex",
-        flexWrap: "wrap",
-        justifyContent: sidebarOpen ? { xs: "center", md: "center" } : "center",
-        gap: { xs: "50px", xl: "50px" },
+        flexDirection: { xs: "column", md: "row" },
+        justifyContent: "center",
+        gap: "50px",
         transition: "400ms all ",
-        pb: "50px",
+        py: "50px",
       }}
     >
       {/* left Side */}
@@ -233,9 +265,11 @@ function Dashboard() {
                       p: "10px",
                     }}
                   >
-                    <Typography sx={{ fontSize: "14px" }}>0</Typography>
                     <Typography sx={{ fontSize: "14px" }}>
-                      {row.name}
+                      {row.left}
+                    </Typography>
+                    <Typography sx={{ fontSize: "14px" }}>
+                      {row.rank}
                     </Typography>
                     <Typography sx={{ fontSize: "14px" }}>
                       {row.right}
@@ -337,7 +371,7 @@ function Dashboard() {
           >
             Sponsor
             <br />
-            Hello world
+            {user.member?.sponsor_id}
           </Typography>
         </Box>
 
@@ -396,7 +430,7 @@ function Dashboard() {
                 alignSelf: "center",
               }}
             >
-              JADE
+              {user.member?.rank_id}
             </Typography>
 
             <Box>
@@ -442,6 +476,7 @@ function Dashboard() {
           >
             <Typography>Criteria for next Rank</Typography>
 
+            {err && <Typography sx={{ fontSize: "15px" }}>err</Typography>}
             <Box
               sx={{
                 display: "flex",
@@ -451,14 +486,14 @@ function Dashboard() {
               }}
             >
               <Typography sx={{ fontSize: "15px" }}>
-                1. Active EMERALD 1L and 1R
+                1. Next Rank: {evaluate?.next_rank}
               </Typography>
 
-              <Box
+              {/* <Box
                 sx={{ width: "13px", height: "13px" }}
                 component="img"
                 src={x_mark_icon}
-              />
+              /> */}
             </Box>
             <Box
               sx={{
@@ -469,14 +504,15 @@ function Dashboard() {
               }}
             >
               <Typography sx={{ fontSize: "15px" }}>
-                2. Left only Downline RV Required/Total 750000/489000
+                2. Left only Downline RV Required/Total {" "}
+                {evaluate?.progress?.left_volume}
               </Typography>
 
-              <Box
+              {/* <Box
                 sx={{ width: "13px", height: "13px" }}
                 component="img"
                 src={x_mark_icon}
-              />
+              /> */}
             </Box>
             <Box
               sx={{
@@ -487,17 +523,20 @@ function Dashboard() {
               }}
             >
               <Typography sx={{ fontSize: "15px" }}>
-                3. Right only Downline RV Required/Total 750000/1755100
+                3. Right only Downline RV Required/Total {" "}
+                {evaluate?.progress?.right_volume}
               </Typography>
 
-              <Box
+              {/* <Box
                 sx={{ width: "13px", height: "13px" }}
                 component="img"
                 src={check_icon}
-              />
+              /> */}
             </Box>
 
-            <Typography sx={{ mt: "20px" }}>3. Total Direct 4/5</Typography>
+            <Typography sx={{ mt: "20px" }}>
+              3. Total Direct  {evaluate?.progress?.direct_referrals}
+            </Typography>
           </Box>
         </Box>
       </Box>

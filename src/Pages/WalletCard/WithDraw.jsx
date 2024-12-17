@@ -33,7 +33,10 @@ export default function WithDraw() {
 
   // render
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={`${css.form} ${css.item4}`}
+    >
       <h4>Withdraw</h4>
 
       <div className={css.coolinput}>

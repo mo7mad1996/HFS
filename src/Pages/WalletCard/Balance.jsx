@@ -20,7 +20,7 @@ export default function Balance({ getWallet, wallet }) {
   }, []);
 
   return (
-    <Box className={css.card}>
+    <Box className={`${css.card} ${css.item1} `}>
       <CardContent>
         <Typography
           gutterBottom

@@ -269,12 +269,21 @@ function OurFocus() {
         </Box>
       </Box>
 
-      <Box className={css.overlay1}>
-        <Box component="img" src={verctor2} />
-      </Box>
-      <Box className={css.overlay2}>
-        <Box component="img" src={vector1} />
-      </Box>
+      <div
+        style={{
+          height: "100%",
+          width: "100vw",
+          overflow: "hidden",
+          position: "relative",
+        }}
+      >
+        <Box className={css.overlay1}>
+          <Box component="img" src={verctor2} />
+        </Box>
+        <Box className={css.overlay2}>
+          <Box component="img" src={vector1} />
+        </Box>
+      </div>
     </Box>
   );
 }
