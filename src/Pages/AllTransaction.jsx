@@ -111,7 +111,7 @@ function AllTransactions() {
   }, []);
 
   return (
-    <Box>
+    <Box sx={{ p: "50px" }}>
       <Box
         className="btns-filter"
         sx={{ display: "flex", gap: "20px", flexWrap: "wrap", width: "100%" }}

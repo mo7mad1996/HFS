@@ -148,7 +148,7 @@ function Dashboard() {
         justifyContent: "center",
         gap: "50px",
         transition: "400ms all ",
-        py: "50px",
+        p: "50px",
       }}
     >
       {/* left Side */}
