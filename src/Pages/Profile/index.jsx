@@ -66,7 +66,7 @@ export default function Profile() {
       handleClose();
       toast.success(data.message);
     } catch (err) {
-      console.log(err);
+      console.error(err);
       toast.error(err.response?.data?.message || err.message);
     } finally {
       setLoading(false);

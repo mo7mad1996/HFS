@@ -20,9 +20,7 @@ export default function WithDraw() {
         transaction_type: "withdrawal",
       });
 
-      // toast.success();
-
-      console.log(res);
+      toast.success(res.data.message);
     } catch (err) {
       console.error(err);
       toast.error(err.response.data.message || err.message);

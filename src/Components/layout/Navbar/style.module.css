@@ -21,7 +21,6 @@
 
 .navbar .container .links {
   flex: 1;
-  /* gap: var(--gap); */
   padding: 15px 0;
   flex: 1;
   justify-content: space-between;

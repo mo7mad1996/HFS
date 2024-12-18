@@ -70,7 +70,7 @@ function Sidebar() {
 
   const goToTS = async () => {
     api.get("/sync-user").then((res) => {
-      const token = res.data.token;
+      const token = encodeURIComponent(res.data.token);
 
       window.location.href = `https://tradingsociety.net/redirect?token=${token}`;
     });

@@ -109,7 +109,6 @@ function Dashboard() {
       const res = await api.get("/rank/evaluate");
 
       const data = res.data;
-      console.log(data);
       setEvaluate(data);
     } catch (err) {
       setError(err.response?.data?.message);
