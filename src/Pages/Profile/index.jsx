@@ -87,9 +87,10 @@ export default function Profile() {
             <Avatar src={user.image} sx={{ width: 60, height: 60 }} />
 
             <p className={css.cookieHeading}>
-              {user.name || user.user_first_name}.
+              {user.first_name || user.user_first_name} {user.last_name}.
               <br />
               <Chip
+                component="span"
                 size="small"
                 color="info"
                 label={user.status}
@@ -142,13 +143,24 @@ export default function Profile() {
                 <form onSubmit={handleSubmit(submit)} className={css.form}>
                   <div className={css.coolinput}>
                     <label htmlFor="input1" className={css.text}>
-                      Name :
+                      First Name :
                     </label>
                     <input
                       id="input1"
                       className={css.input}
-                      defaultValue={user.name}
-                      {...register("name")}
+                      defaultValue={user.first_name}
+                      {...register("first_name")}
+                    />
+                  </div>
+                  <div className={css.coolinput}>
+                    <label htmlFor="input1" className={css.text}>
+                      Last Name :{user.last_name}
+                    </label>
+                    <input
+                      id="input1"
+                      className={css.input}
+                      defaultValue={user.last_name}
+                      {...register("last_name")}
                     />
                   </div>
                   <div className={css.coolinput}>
@@ -192,7 +204,7 @@ export default function Profile() {
         />
       </Box>
     );
-  else return <div>Error</div>;
+  else return <div>Loading...</div>;
 }
 
 function DeleteModal({ open, handleClose }) {
@@ -310,6 +322,7 @@ function EditEmail({ user }) {
         </label>
         <input
           id="input1"
+          readOnly
           defaultValue={user.email}
           className={css.input}
           {...register("email")}

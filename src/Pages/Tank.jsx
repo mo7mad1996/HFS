@@ -71,7 +71,7 @@ function Tank() {
             >
               <Typography sx={{ fontSize: "19px" }}>Tank</Typography>
               <Typography sx={{ fontSize: "19px" }}>
-                Your ID: {user.id}
+                Your ID: {user.id_code}
               </Typography>
             </Box>
             {tanks.map((member, n) => (

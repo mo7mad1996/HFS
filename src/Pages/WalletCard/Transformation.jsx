@@ -62,7 +62,7 @@ export default function Transformation({ getWallet }) {
           placeholder="Receiver Member ID"
           name="input"
           className={css.input}
-          {...register("receiverMemberId")}
+          {...register("receiver_id_code")}
         />
       </div>
       <div className={css.coolinput}>

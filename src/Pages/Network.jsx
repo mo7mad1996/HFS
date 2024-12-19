@@ -25,11 +25,13 @@ const Network = () => {
   const { user: auth_user } = useContext(Context);
   const { register, handleSubmit } = useForm();
 
+  console.log(auth_user);
   // data
   const [user, setUser] = useState({
     id: auth_user.id,
-    user_name: auth_user.name,
-    rank: auth_user.rank,
+    id_code: auth_user.id_code,
+    user_name: auth_user.username,
+    rank: auth_user.member?.rank_id,
     user_image: auth_user.image,
   });
 
@@ -40,7 +42,7 @@ const Network = () => {
       const data = res.data["user data"];
       const u = {
         id: data.id,
-        user_name: data.name,
+        user_name: data.username,
         rank: data.member?.rank?.name,
         user_image: data.image,
       };

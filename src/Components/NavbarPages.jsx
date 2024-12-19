@@ -31,13 +31,17 @@ function NavbarPages() {
         <Typography
           sx={{ fontSize: "15px", fontWeight: "700", textAlign: "right" }}
         >
-          {user.name}
+          {user.username}
           <br />
           {user.email}
         </Typography>
 
         <Box sx={{ width: "37px", height: "37px" }}>
-          {user.image ? <Avatar alt={user.name} src={user.image} /> : <User />}
+          {user.image ? (
+            <Avatar alt={user.first_name} src={user.image} />
+          ) : (
+            <User />
+          )}
         </Box>
       </Box>
     </Box>

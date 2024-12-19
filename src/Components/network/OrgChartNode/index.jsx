@@ -11,7 +11,7 @@ import useApi from "@/api";
 // assets
 import UserPlaceholder from "@/assets/images/placeholder/user.png";
 
-const OrgChartNode = ({ id, user_name, rank, user_image, r, l }) => {
+const OrgChartNode = ({ id, id_code, user_name, rank, user_image, r, l }) => {
   // config
   const api = useApi();
 
@@ -105,7 +105,7 @@ const OrgChartNode = ({ id, user_name, rank, user_image, r, l }) => {
             {user_name}
           </Typography>
           <Typography sx={{ fontSize: "10px", color: "#fff" }}>
-            id: {id}
+            id: {id_code}
           </Typography>
           <Typography sx={{ fontSize: "10px", color: "#fff" }}>
             {rank}

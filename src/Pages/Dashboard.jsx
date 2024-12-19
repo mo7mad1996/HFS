@@ -1,5 +1,5 @@
 /* eslint-disable no-irregular-whitespace */
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -13,10 +13,7 @@ import useApi from "@/api";
 
 // assets
 import copy_icon from "@/assets/images/pages_assets/copy_icon.png";
-import vector1 from "@/assets/images/pages_assets/vector1.png";
 import arrow from "@/assets/images/pages_assets/arrow.png";
-import check_icon from "@/assets/images/layout/check_icon.png";
-import x_mark_icon from "@/assets/images/layout/x_mark_icon.png";
 
 function Dashboard() {
   // config
@@ -49,6 +46,7 @@ function Dashboard() {
   ]);
   const [evaluate, setEvaluate] = useState(null);
   const [err, setError] = useState(null);
+  const [rank, setRank] = useState(null);
 
   let containerVariants = {
     initial: {
@@ -82,6 +80,14 @@ function Dashboard() {
       setCount(data);
     } catch (err) {
       toast.error(err.response?.data?.message);
+      console.error(err);
+    }
+  };
+  const getRank = async () => {
+    try {
+      const res = await api.get("/rank");
+      setRank(res.data.rank);
+    } catch (err) {
       console.error(err);
     }
   };
@@ -128,6 +134,7 @@ function Dashboard() {
   useEffect(() => {
     getVolumes();
     getCounts();
+    getRank();
     getMemberDownLine();
     getRankEvaluate();
     getUser();
@@ -197,7 +204,7 @@ function Dashboard() {
             }}
           >
             <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              <Typography> 0</Typography>
+              <Typography>{volume.left_leg_volume}</Typography>
               <Typography>{volume.left_leg_volume}</Typography>
               <Typography>{count.left_downlines_count}</Typography>
             </Box>
@@ -209,7 +216,7 @@ function Dashboard() {
             </Box>
 
             <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              <Typography>0</Typography>
+              <Typography>{volume.right_leg_volume}</Typography>
               <Typography>{volume.right_leg_volume}</Typography>
               <Typography>{count.right_downlines_count}</Typography>
             </Box>
@@ -429,7 +436,7 @@ function Dashboard() {
                 alignSelf: "center",
               }}
             >
-              {user.member?.rank_id}
+              {rank?.name}
             </Typography>
 
             <Box>
@@ -438,8 +445,8 @@ function Dashboard() {
           </Box>
           <Box
             sx={{
-              backgroundImage: `url(${vector1})`,
-              width: "133px",
+              backgroundImage: `url(${rank?.image})`,
+              // width: "133px",
               height: "133px",
               backgroundSize: "cover",
               objectFit: "cover",
@@ -525,12 +532,6 @@ function Dashboard() {
                 3. Right only Downline RV Required/Total {" "}
                 {evaluate?.progress?.right_volume}
               </Typography>
-
-              {/* <Box
-                sx={{ width: "13px", height: "13px" }}
-                component="img"
-                src={check_icon}
-              /> */}
             </Box>
 
             <Typography sx={{ mt: "20px" }}>
