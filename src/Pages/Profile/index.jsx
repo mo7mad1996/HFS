@@ -31,12 +31,17 @@ export default function Profile() {
   const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [rank, setRank] = useState(null);
 
   // methods
   const getUserData = async () => {
     try {
       const res = await api.get("/user/data");
       const data = res.data["user data"];
+
+      const d = await api.get("/rank");
+
+      setRank(d.data.rank);
 
       setUser(data);
     } catch (err) {
@@ -93,7 +98,7 @@ export default function Profile() {
                 component="span"
                 size="small"
                 color="info"
-                label={user.status}
+                label={rank.name}
                 // deleteIcon={< />}
                 icon={<AiOutlineFileDone />}
               />

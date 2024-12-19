@@ -150,7 +150,7 @@ function Dashboard() {
       transition={{ duration: 3 }}
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", md: "row" },
+        flexDirection: { xs: "column", lg: "row" },
         justifyContent: "center",
         gap: "50px",
         transition: "400ms all ",
@@ -163,13 +163,14 @@ function Dashboard() {
           display: "flex",
           flexDirection: "column",
           gap: { xs: "50px", xl: "100px" },
+          flex: 1,
         }}
       >
         <Box
           sx={{
-            width: sidebarOpen
-              ? { xs: "100%", md: "600px", xl: "900px" }
-              : { xs: "100%", md: "700px", xl: "900px" },
+            // width: sidebarOpen
+            // ? { xs: "100%", md: "600px", xl: "900px" }
+            // : { xs: "100%", md: "700px", xl: "900px" },
             height: { xs: "288px", xl: "288px" },
             borderRadius: "15px",
           }}
@@ -292,10 +293,10 @@ function Dashboard() {
       </Box>
 
       {/* Right Side */}
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box sx={{ display: "flex", flexDirection: "column", flex: { sm: 0.3 } }}>
         <Box
           sx={{
-            width: "355px",
+            // maxWidth: "355px",
             height: "133px",
             background:
               "linear-gradient(116.25deg, #51D5F5 13.83%, #762853 33.13%, #02070B 86.17%)",
@@ -312,9 +313,10 @@ function Dashboard() {
             <Box sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
               <Box
                 sx={{
-                  width: "228px",
+                  // width: "228px",
                   height: "38px",
                   borderRadius: "5px",
+                  flex: 1,
                   backgroundColor: "#FFFFFF",
                   display: "flex",
                   justifyContent: "start",
@@ -329,7 +331,7 @@ function Dashboard() {
                     mask: "linear-gradient(90deg, black 70%, transparent)",
                   }}
                 >
-                  <span className="oneLine" style={{ width: "210px" }}>
+                  <span className="oneLine" style={{ flex: "2" }}>
                     {referral}
                   </span>
                 </Typography>
@@ -393,7 +395,7 @@ function Dashboard() {
           }}
           transition={{ duration: 0.2, type: "easeInOut" }}
           sx={{
-            width: "355px",
+            // width: "355px",
             height: "163px",
             backgroundColor: "#061622",
             mt: "130px",
@@ -461,7 +463,7 @@ function Dashboard() {
         <Box
           sx={{
             mt: "10px",
-            width: "355px",
+            // width: "355px",
             height: "auto",
             border: "1px solid #061622",
             backgroundColor: "#02070B",
