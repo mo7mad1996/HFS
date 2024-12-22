@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 // assets
 import logo from "@/assets/images/HFSLOGO.png";
 import membership from "@/assets/images/pages_assets/membership.png";
@@ -69,11 +71,17 @@ function Sidebar() {
   };
 
   const goToTS = async () => {
-    api.get("/sync-user").then((res) => {
-      const token = encodeURIComponent(res.data.token);
+    api
+      .get("/sync-user")
+      .then((res) => {
+        const token = encodeURIComponent(res.data.token);
 
-      window.location.href = `https://tradingsociety.net/redirect?token=${token}`;
-    });
+        window.location.href = `https://tradingsociety.net/redirect?token=${token}`;
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error(err.response?.data?.message);
+      });
   };
 
   return (

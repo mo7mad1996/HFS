@@ -94,6 +94,9 @@ export default function Profile() {
             <p className={css.cookieHeading}>
               {user.first_name || user.user_first_name} {user.last_name}.
               <br />
+              <Box component="sub" sx={{ pr: 2, color: "#ddd" }}>
+                {user.username}
+              </Box>
               <Chip
                 component="span"
                 size="small"

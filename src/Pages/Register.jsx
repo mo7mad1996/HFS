@@ -44,7 +44,9 @@ const Register = () => {
   ];
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
-    name: "",
+    first_name: "",
+    last_name: "",
+    username: "",
     email: "",
     password: "",
     password_confirmation: "",
@@ -119,7 +121,7 @@ const Register = () => {
         if (!(formData.name || formData.email))
           return setErrors((prev) => ({
             ...prev,
-            name: formData.name ? "" : "Name is required.",
+            first_name: formData.first_name ? "" : "Name is required.",
             email: formData.email ? "" : "Email is required.",
           }));
         setActiveStep((prevStep) => prevStep + 1);
@@ -331,7 +333,7 @@ function Step1({ formData, sponsorName, isConfirmed, setIsConfirmed, errors }) {
         {formData.sponsor_id}?
       </Typography>
       <Typography sx={{ color: "#000" }}>
-        <strong>Full Name: {sponsorName}</strong>
+        <strong>Sponsor: {sponsorName}</strong>
       </Typography>
       <FormControlLabel
         sx={{
@@ -366,8 +368,22 @@ function Step2({
     <>
       <TextField
         fullWidth
-        label="Full Name"
-        name="name"
+        label="First Name"
+        name="first_name"
+        onChange={handleChange}
+        required
+      />
+      <TextField
+        fullWidth
+        label="Last Name"
+        name="last_name"
+        onChange={handleChange}
+        required
+      />
+      <TextField
+        fullWidth
+        label="username"
+        name="username"
         onChange={handleChange}
         required
       />
@@ -472,7 +488,7 @@ function Step3({ setFormData }) {
           }}
         >
           <Typography>Drag the Image here</Typography>
-          <label htmlhtmlFor="Input">Or Select an Image</label>
+          <label htmlFor="Input">Or Select an Image</label>
           <input
             id="Input"
             type="file"
@@ -504,7 +520,13 @@ function Review({
         Review and Confirm
       </Typography>
       <Typography>
-        <strong>Name:</strong> {formData.name}
+        <strong>Fist Name:</strong> {formData.first_name}
+      </Typography>
+      <Typography>
+        <strong>Last Name:</strong> {formData.last_name}
+      </Typography>
+      <Typography>
+        <strong>UserName:</strong> {formData.username}
       </Typography>
       <Typography>
         <strong>Email:</strong> {formData.email}

@@ -199,7 +199,7 @@ function Footer() {
             </Box>
             <Box className={css.item}>
               <FaEnvelope className={css.icon} />
-              <Typography>info@tradingsociety.net</Typography>
+              <Typography>info@hfssociety.net</Typography>
             </Box>
           </Grid2>
         </Grid2>

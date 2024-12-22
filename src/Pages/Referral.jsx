@@ -141,7 +141,9 @@ function Form({ api, sponsor_id }) {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [formData, setFormData] = useState({
-    name: "",
+    first_name: "",
+    last_name: "",
+    username: "",
     email: "",
     password: "",
     password_confirmation: "",
@@ -234,7 +236,7 @@ function Form({ api, sponsor_id }) {
             }}
           >
             <Typography>Drag the Image here</Typography>
-            <label htmlhtmlFor="Input">Or Select an Image</label>
+            <label htmlFor="Input">Or Select an Image</label>
             <input
               id="Input"
               type="file"
@@ -257,10 +259,37 @@ function Form({ api, sponsor_id }) {
         sx={{ mt: 1 }}
         required
         fullWidth
-        label="Name"
-        placeholder="Full name"
+        label="First name"
+        placeholder="First name"
         value={formData.name}
-        onChange={(e) => setFormData((o) => ({ ...o, name: e.target.value }))}
+        onChange={(e) =>
+          setFormData((o) => ({ ...o, first_name: e.target.value }))
+        }
+      />
+      <TextField
+        size="small"
+        sx={{ mt: 1 }}
+        required
+        fullWidth
+        label="Last name	"
+        placeholder="Last name"
+        value={formData.name}
+        onChange={(e) =>
+          setFormData((o) => ({ ...o, last_name: e.target.value }))
+        }
+      />
+
+      <TextField
+        size="small"
+        sx={{ mt: 1 }}
+        required
+        fullWidth
+        label="username"
+        placeholder="Username"
+        value={formData.name}
+        onChange={(e) =>
+          setFormData((o) => ({ ...o, username: e.target.value }))
+        }
       />
       <TextField
         size="small"
