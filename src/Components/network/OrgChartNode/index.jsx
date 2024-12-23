@@ -11,7 +11,17 @@ import useApi from "@/api";
 // assets
 import UserPlaceholder from "@/assets/images/placeholder/user.png";
 
-const OrgChartNode = ({ id, id_code, user_name, rank, user_image, r, l }) => {
+const OrgChartNode = ({
+  id,
+  user_id_code,
+  id_code,
+  user_name,
+  rank_name,
+  rank,
+  user_image,
+  r,
+  l,
+}) => {
   // config
   const api = useApi();
 
@@ -40,6 +50,7 @@ const OrgChartNode = ({ id, id_code, user_name, rank, user_image, r, l }) => {
   // on component render
   useEffect(() => {
     getLegs(id);
+    setIsChildrenVisible(false);
   }, [id]);
 
   return (
@@ -105,10 +116,10 @@ const OrgChartNode = ({ id, id_code, user_name, rank, user_image, r, l }) => {
             {user_name}
           </Typography>
           <Typography sx={{ fontSize: "10px", color: "#fff" }}>
-            id: {id_code}
+            id: {user_id_code} {id_code}
           </Typography>
           <Typography sx={{ fontSize: "10px", color: "#fff" }}>
-            {rank}
+            {rank_name} {rank?.name}
           </Typography>
         </Box>
 
@@ -133,7 +144,7 @@ const OrgChartNode = ({ id, id_code, user_name, rank, user_image, r, l }) => {
       )}
       {isChildrenVisible && (
         <>
-          {left_leg_member && right_leg_member && (
+          {(left_leg_member || right_leg_member) && (
             <div className={css.divider}>
               <span></span>
               <div className={css.line}></div>
@@ -141,8 +152,16 @@ const OrgChartNode = ({ id, id_code, user_name, rank, user_image, r, l }) => {
             </div>
           )}
           <Box sx={{ display: "flex", gap: 2 }}>
-            {left_leg_member && <OrgChartNode {...left_leg_member} l="1" />}
-            {right_leg_member && <OrgChartNode {...right_leg_member} r="1" />}
+            {left_leg_member ? (
+              <OrgChartNode {...left_leg_member} l="1" />
+            ) : (
+              <Box sx={{ width: "225px" }} />
+            )}
+            {right_leg_member ? (
+              <OrgChartNode {...right_leg_member} r="1" />
+            ) : (
+              <Box sx={{ width: "225px" }} />
+            )}
           </Box>
         </>
       )}

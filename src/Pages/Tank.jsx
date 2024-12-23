@@ -101,9 +101,16 @@ function Tank() {
 
 export default Tank;
 
-function RenderMember({ member_name, member_id, getTanks, member_package }) {
+function RenderMember({
+  member_firstname,
+  member_lastname,
+  member_id,
+  getTanks,
+  member_package,
+}) {
   const api = useApi();
   const [loading, setLoading] = useState(false);
+  const member_name = member_firstname + " " + member_lastname;
 
   const append = async (placement) => {
     try {
@@ -147,7 +154,7 @@ function RenderMember({ member_name, member_id, getTanks, member_package }) {
             gap: "1em",
           }}
         >
-          {member_package && (
+          {/* {member_package && (
             <Button
               variant="outlined"
               color="error"
@@ -156,7 +163,7 @@ function RenderMember({ member_name, member_id, getTanks, member_package }) {
             >
               Delete
             </Button>
-          )}
+          )} */}
           <Button
             variant="outlined"
             color="secondary"

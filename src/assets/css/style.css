@@ -85,3 +85,10 @@ a {
     opacity: 0.1;
   }
 }
+
+.react-transform-wrapper {
+  width: 100% !important;
+  /* display: grid !important; */
+  /* place-content: center; */
+  overflow: visible !important;
+}

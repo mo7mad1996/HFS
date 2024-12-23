@@ -30,7 +30,7 @@ function Dashboard() {
     left_downlines_count: "-",
     right_downlines_count: "-",
   });
-  const referral = `${window.location.origin}/referral?u=${user.id}`;
+  const referral = `${window.location.origin}/referral?u=${user.id_code}`;
 
   const [rows, setRows] = useState([
     { right: "0", left: "0", rank: "ROYAL CROWN DIAMOND" },

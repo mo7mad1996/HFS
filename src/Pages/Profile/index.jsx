@@ -140,7 +140,7 @@ export default function Profile() {
             }}
           >
             <Card
-              sx={{ minWidth: "500px", pointerEvents: "auto" }}
+              sx={{ minWidth: "min(80vw, 500px)", pointerEvents: "auto" }}
               onClick={(e) => e.stopPropagation()}
             >
               <CardContent>

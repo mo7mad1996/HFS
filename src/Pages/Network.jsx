@@ -1,17 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import useApi from "@/api";
-import {
-  Card,
-  CardContent,
-  Typography,
-  CardMedia,
-  Box,
-  IconButton,
-  Button,
-  TextField,
-} from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import toast from "react-hot-toast";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Context } from "@/Context";
@@ -26,12 +17,13 @@ const Network = () => {
   const { register, handleSubmit } = useForm();
 
   console.log(auth_user);
+
   // data
   const [user, setUser] = useState({
     id: auth_user.id,
-    id_code: auth_user.id_code,
+    user_id_code: auth_user.id_code,
     user_name: auth_user.username,
-    rank: auth_user.member?.rank_id,
+    rank: auth_user.member?.rank,
     user_image: auth_user.image,
   });
 
@@ -43,7 +35,7 @@ const Network = () => {
       const u = {
         id: data.id,
         user_name: data.username,
-        rank: data.member?.rank?.name,
+        rank: data.rank,
         user_image: data.image,
       };
 
@@ -78,10 +70,7 @@ const Network = () => {
   // }, []);
 
   return (
-    <div
-      className="org-chart"
-      style={{ width: "80vw", height: "100vh", overflow: "hidden" }}
-    >
+    <>
       <h1>Organizational Chart</h1>
       <TransformWrapper
         initialScale={1}
@@ -92,17 +81,18 @@ const Network = () => {
       >
         {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
           <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center",
-              position: "relative",
-              width: "100%",
-              height: "100%",
-            }}
+            sx={
+              {
+                // justifyContent: "center",
+                // flexDirection: "column",
+                // alignItems: "center",
+                // position: "relative",
+                // width: "100%",
+                // height: "100%",
+              }
+            }
           >
-            <Box sx={{ position: "absolute", top: 10, left: 10, zIndex: 2 }}>
+            <Box sx={{ position: "sticky", top: 10, left: 10, zIndex: 2 }}>
               <Button
                 variant="contained"
                 color="primary"
@@ -147,13 +137,13 @@ const Network = () => {
               </form>
             </Box>
 
-            <TransformComponent contentStyle={{}}>
+            <TransformComponent>
               <OrgChartNode {...user} />
             </TransformComponent>
           </Box>
         )}
       </TransformWrapper>
-    </div>
+    </>
   );
 };
 
