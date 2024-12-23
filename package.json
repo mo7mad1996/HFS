@@ -31,6 +31,7 @@
     "lucide-react": "^0.454.0",
     "nodemailer": "^6.9.16",
     "react": "^18.3.1",
+    "react-custom-scrollbar": "^1.0.0",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.1",
     "react-hot-toast": "^2.4.1",

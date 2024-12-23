@@ -18,6 +18,8 @@ function NavbarPages() {
         justifyContent: "space-between",
         px: "20px",
         gap: "10px",
+        zIndex: 2,
+        position: "relative",
       }}
     >
       <Box

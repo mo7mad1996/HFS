@@ -9,12 +9,13 @@ import network from "@/assets/images/pages_assets/network.png";
 import transactions from "@/assets/images/pages_assets/transactions.png";
 import sidebar_bg from "@/assets/images/pages_assets/sidebar_bg.png";
 
-//
+// components
 import { Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Context } from "@/Context";
 import { motion } from "framer-motion";
+import { CustomScrollBar } from "react-custom-scrollbar";
 
 // css
 import css from "./style.module.css";
@@ -76,11 +77,15 @@ function Sidebar() {
       .then((res) => {
         const token = encodeURIComponent(res.data.token);
 
-        window.location.href = `https://tradingsociety.net/redirect?token=${token}`;
+        window.open(
+          `https://tradingsociety.net/redirect?token=${token}`,
+          "_blank"
+        );
       })
       .catch((err) => {
         console.error(err);
         toast.error(err.response?.data?.message);
+        window.open(`https://tradingsociety.net/`, "_blank");
       });
   };
 
@@ -107,6 +112,16 @@ function Sidebar() {
         overflowY: "auto",
       }}
     >
+      {/* <CustomScrollBar
+        style={{ width: "100%", height: "100vh" }}
+        // allowOuterScroll={false}
+        // heightRelativeToParent={`calc(100% - 300px)`}
+        // onScroll={() => {}}
+        // addScrolledClass={true}
+        // freezePosition={false}
+        // handleClass="inner-handle"
+        // minScrollHandleHeight={38}
+      > */}
       <Box
         sx={{
           width: "88px",
@@ -214,6 +229,7 @@ function Sidebar() {
           Logout
         </Button>
       </Box>
+      {/* </CustomScrollBar> */}
     </Box>
   );
 }
